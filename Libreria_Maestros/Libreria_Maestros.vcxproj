@@ -139,7 +139,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Categoria.cpp" />
     <ClCompile Include="Libreria_Maestros.cpp" />
+    <ClCompile Include="Libro.cpp" />
+    <ClCompile Include="L_LibroxCat.cpp" />
+    <ClCompile Include="NodoIntermedio.cpp" />
+    <ClCompile Include="NodoLibro.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Categoria.h" />
+    <ClInclude Include="Libro.h" />
+    <ClInclude Include="L_LibroxCat.h" />
+    <ClInclude Include="NodoIntermedio.h" />
+    <ClInclude Include="NodoLibro.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

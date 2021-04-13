@@ -18,5 +18,37 @@
     <ClCompile Include="Libreria_Maestros.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Libro.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Categoria.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="L_LibroxCat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NodoLibro.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NodoIntermedio.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Libro.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Categoria.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="L_LibroxCat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NodoLibro.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NodoIntermedio.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
