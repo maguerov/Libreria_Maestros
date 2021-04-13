@@ -142,14 +142,20 @@
     <ClCompile Include="Categoria.cpp" />
     <ClCompile Include="Libreria_Maestros.cpp" />
     <ClCompile Include="Libro.cpp" />
+    <ClCompile Include="L_Categorias.cpp" />
+    <ClCompile Include="L_Libros.cpp" />
     <ClCompile Include="L_LibroxCat.cpp" />
+    <ClCompile Include="NodoCategoria.cpp" />
     <ClCompile Include="NodoIntermedio.cpp" />
     <ClCompile Include="NodoLibro.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Categoria.h" />
     <ClInclude Include="Libro.h" />
+    <ClInclude Include="L_Categorias.h" />
+    <ClInclude Include="L_Libros.h" />
     <ClInclude Include="L_LibroxCat.h" />
+    <ClInclude Include="NodoCategoria.h" />
     <ClInclude Include="NodoIntermedio.h" />
     <ClInclude Include="NodoLibro.h" />
   </ItemGroup>

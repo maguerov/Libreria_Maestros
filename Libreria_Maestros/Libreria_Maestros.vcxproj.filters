@@ -33,6 +33,15 @@
     <ClCompile Include="NodoIntermedio.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="NodoCategoria.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="L_Libros.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="L_Categorias.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Libro.h">
@@ -48,6 +57,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="NodoIntermedio.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NodoCategoria.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="L_Libros.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="L_Categorias.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
