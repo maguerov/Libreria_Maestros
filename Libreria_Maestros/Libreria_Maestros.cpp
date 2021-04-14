@@ -8,8 +8,9 @@
 #include <iostream>
 using namespace std;
 #include <stdlib.h>
+#include "L_Libros.h"
 
-
+void test();
 void menu();
 void procesarOpcion(int opcion);
 
@@ -25,14 +26,40 @@ void procesarReportes(int opcion);
 int opcionMenu;
 int nuevoNumero;
 int posicion;
-
+L_Libros* l = new L_Libros();
 
 int main()
 {
-    menu();
+    test();
+    //menu();
     system("Pause");
     return 0;
 }
+
+
+
+void test() {
+
+    Libro *libro = new Libro("Arthur Conan Doyle", 1, "Estudio en Escarlata", 3500, "No agotado", "Editorial Alma", 0, 1887);
+    Libro* libro2 = new Libro("Dante Allighieri", 2, "La Divina Comedia", 4500, "No agotado", "Editorial Alma", 3, 1600);
+    Libro* libro3 = new Libro("Mary Shelley", 3, "Frankestein", 5500, "No agotado", "Editorial Oceano", 7, 1890);
+    Libro* libro4 = new Libro("J.R.R Tolkien", 4, "Silmarillion", 7500, "No agotado", "Editorial Alma", 3, 1928);
+    l->agregarInicio(libro);
+    l->agregarInicio(libro2);
+    l->agregarInicio(libro3);
+    l->agregarInicio(libro4);
+
+    l->desplegar();
+
+    l->precioInventarioTotal();
+   
+    int agotados = l->cantidadLibrosAgotados();
+
+    cout << "Libros Agotados: " << agotados << endl;
+
+
+}
+
 
 // Menu principal
 void menu()

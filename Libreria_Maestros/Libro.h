@@ -11,7 +11,6 @@ private:
 	string tituloLibro;
 	float precio;
 	string estado;//Disponible o agotado
-	int cantidad;
 	string editorial;
 	int annio;
 	int cantInventario;
