@@ -41,8 +41,8 @@ void L_Libros::agregarInicio(Libro* libro)
 {
 	NodoLibro* aux = new NodoLibro(libro);
 	aux->setSiguiente(cab);
-	cab = aux;
-	largo++;
+	setCab(aux);
+	setLargo(getLargo() + 1);
 }
 
 

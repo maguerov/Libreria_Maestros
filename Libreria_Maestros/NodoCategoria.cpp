@@ -1,12 +1,13 @@
 #include "NodoCategoria.h"
 
 NodoCategoria::NodoCategoria() {
-    this->categoria = new Categoria();
-    this->sgte = NULL;
+  categoria = NULL;
+   sgte = NULL;
 }
 
 NodoCategoria::~NodoCategoria() {
-
+    this->categoria = NULL;
+    sgte = NULL;
 }
 
 NodoCategoria::NodoCategoria(Categoria* categoria) {

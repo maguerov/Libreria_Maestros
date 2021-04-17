@@ -27,8 +27,8 @@ Categoria::~Categoria()
 string Categoria::getDescripcion() {
 	return this->descripcion;
 }
-void Categoria::setDescripcion(string pdescripcion) {
-	this->descripcion = pdescripcion;
+void Categoria::setDescripcion(string pDescripcion) {
+	this->descripcion = pDescripcion;
 }
 
 L_LibroXCat* Categoria::getLista() {

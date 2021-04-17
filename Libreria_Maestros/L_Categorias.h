@@ -5,7 +5,7 @@ class L_Categorias
 {
 
 private:
-	NodoCategoria* cab;
+	NodoCategoria* cat;
 	int largo;
 public:
 
@@ -13,8 +13,10 @@ public:
 	int getLargo();
 	void setLargo(int largo);
 	NodoCategoria* getCab();
-	void setCab(NodoCategoria* cab);
+	void setCab(NodoCategoria* cat);
 	void desplegar();
 	bool esVacia();
+	void agregarInicio(Categoria* categoria);
+
 };
 

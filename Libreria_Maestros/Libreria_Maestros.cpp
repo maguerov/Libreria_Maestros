@@ -9,6 +9,7 @@
 using namespace std;
 #include <stdlib.h>
 #include "L_Libros.h"
+#include "L_Categorias.h"
 
 void test();
 void menu();
@@ -27,6 +28,7 @@ int opcionMenu;
 int nuevoNumero;
 int posicion;
 L_Libros* l = new L_Libros();
+L_Categorias* cat = new L_Categorias();
 
 int main()
 {
@@ -39,7 +41,7 @@ int main()
 
 
 void test() {
-
+    /*
     Libro *libro = new Libro("Arthur Conan Doyle", 1, "Estudio en Escarlata", 3500, "No agotado", "Editorial Alma", 0, 1887);
     Libro* libro2 = new Libro("Dante Allighieri", 2, "La Divina Comedia", 4500, "No agotado", "Editorial Alma", 3, 1600);
     Libro* libro3 = new Libro("Mary Shelley", 3, "Frankestein", 5500, "No agotado", "Editorial Oceano", 7, 1890);
@@ -56,6 +58,19 @@ void test() {
     int agotados = l->cantidadLibrosAgotados();
 
     cout << "Libros Agotados: " << agotados << endl;
+    */
+    
+    Categoria* categoria = new Categoria("Terror");
+    Categoria* categoria2 = new Categoria("Espiritual");
+    //Categoria* categoria3 = new Categoria("Actualidad");
+
+    cat->agregarInicio(categoria);
+    cat->agregarInicio(categoria2);
+
+    cat->desplegar();
+    
+    
+    
 
 
 }
