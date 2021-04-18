@@ -11,17 +11,17 @@ public:
 	void setLargo(int largo);
 	NodoLibro* getCab();
 	void setCab(NodoLibro* cab);
-	void desplegar();
-	void agregarInicio(Libro* libro);
-	bool esVacia();
-	void precioInventarioTotal();
-	int cantidadLibrosAgotados();
-	void librosAgotados();
-	void librosNoAgotados();
-	void actualizarPrecio(int porcentaje);
-	bool eliminar(int codigo);
+	void desplegar();//Sirve
+	void agregarInicio(Libro* libro);//Sirve
+	bool esVacia();//Sirve
+	void precioInventarioTotal();//Sirve
+	int cantidadLibrosAgotados();//Sirve
+	void librosAgotados();//Sirve
+	void librosNoAgotados();//Sirve
+	bool actualizarPrecio(int porcentaje, int codigo);//Sirve
+	bool eliminar(int codigo);//Sirve
 	NodoLibro* dirNodo(int codigo);
 	NodoLibro* dirAnterior(int codigo);
 	void buscarNombre(string titulo);
-	void buscarCodigo(int codigo);
+	Libro* buscarCodigo(int codigo);//Sirve
 };

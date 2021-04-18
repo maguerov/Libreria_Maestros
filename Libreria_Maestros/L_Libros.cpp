@@ -72,7 +72,7 @@ int L_Libros::cantidadLibrosAgotados()
 	int agotados = 0;
 	if (!esVacia()) {
 		NodoLibro* aux = cab;
-		while (aux->getSiguiente() != NULL) {
+		while (aux != NULL) {
 			if (aux->getLibro()->getCantidad() == 0) {
 				agotados++;
 			}
@@ -86,7 +86,7 @@ void L_Libros::librosAgotados()
 {
 	if (!esVacia()) {
 		NodoLibro* aux = cab;
-		while (aux->getSiguiente() != NULL) {
+		while (aux != NULL) {
 			if (aux->getLibro()->getCantidad() == 0)
 				aux->getLibro()->toString();
 			aux = aux->getSiguiente();
@@ -98,7 +98,7 @@ void L_Libros::librosNoAgotados()
 {
 	if (!esVacia()) {
 		NodoLibro* aux = cab;
-		while (aux->getSiguiente() != NULL) {
+		while (aux != NULL) {
 			if (aux->getLibro()->getCantidad() != 0)
 				aux->getLibro()->toString();
 			aux = aux->getSiguiente();
@@ -106,26 +106,17 @@ void L_Libros::librosNoAgotados()
 	}
 }
 
-void L_Libros::actualizarPrecio(int porcentaje)
+bool L_Libros::actualizarPrecio(int porcentaje, int codigo)
 {
-	float convertido = 0;
-	if (porcentaje > 0) {
-		convertido = porcentaje / 100;
-		convertido += 1;
+	bool encontrado = false;
+	Libro* libro = buscarCodigo(codigo);
+	if (libro->getCodigo()!=NULL) {
+		double diferencia = (porcentaje * libro->getPrecio()) / 100;
+		libro->setPrecio(libro->getPrecio() + diferencia);
+		encontrado = true;
 	}
-	else
-	{
-		convertido = porcentaje + 100;
-		convertido /= 100;
-	}
-	if (!esVacia()) {
-		NodoLibro* aux = cab;
-		while (aux->getSiguiente() != NULL) {
-			if (aux->getLibro()->getCantidad() != 0)
-				aux->getLibro()->setPrecio(aux->getLibro()->getPrecio() * convertido);
-			aux = aux->getSiguiente();
-		}
-	}
+
+	return encontrado;
 }
 
 bool L_Libros::eliminar(int codigo)
@@ -233,9 +224,10 @@ void L_Libros::buscarNombre(string nombre)
 	}
 }
 
-void L_Libros::buscarCodigo(int codigo)
+Libro *L_Libros::buscarCodigo(int codigo)
 {
 	NodoLibro* aux = getCab();
+	Libro *lib = new Libro();
 	bool encontrado = false;
 	if (aux->getLibro()->getCodigo() == codigo) {
 		encontrado = true;
@@ -246,7 +238,7 @@ void L_Libros::buscarCodigo(int codigo)
 		while (aux->getSiguiente() != NULL)
 		{
 			if (aux->getSiguiente()->getLibro()->getCodigo() == codigo) {
-				aux->getLibro()->toString();
+				lib = aux->getLibro();
 				encontrado = true;
 			}
 			aux = aux->getSiguiente();
@@ -254,6 +246,8 @@ void L_Libros::buscarCodigo(int codigo)
 	}
 	if (encontrado == false)
 	{
-		cout << "Libro no encontrado" << endl;
+		return NULL;
 	}
+
+	return lib;
 }

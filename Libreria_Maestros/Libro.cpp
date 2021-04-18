@@ -14,6 +14,19 @@ Libro::Libro(string autor, int codigo, string tituloLibro, float precio, string 
 
 Libro::~Libro()
 {
+	
+}
+
+Libro::Libro()
+{
+	this->autor = "";
+	this->codigo = NULL;
+	this->tituloLibro = "";
+	this->precio = NULL;
+	this->estado = "";
+	this->editorial = "";
+	this->cantInventario = NULL;
+	this->annio = NULL;
 }
 
 string Libro::getAutor()

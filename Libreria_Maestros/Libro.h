@@ -18,6 +18,7 @@ private:
 public:
 	Libro(string autor, int codigo, string tituloLibro, float precio, string estado, string editorial, int cantInventario, int annio);
 	~Libro();
+	Libro();
 	string getAutor();
 	void setAutor(string nombre);
 	int getCodigo();
