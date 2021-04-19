@@ -14,9 +14,9 @@ public:
 	void setLargo(int largo);
 	NodoCategoria* getCab();
 	void setCab(NodoCategoria* cat);
-	void desplegar();
+	void desplegar(); //listo
 	bool esVacia();
-	void agregarInicio(Categoria* categoria);
+	void agregarInicio(Categoria* categoria);//listo
 
 };
 

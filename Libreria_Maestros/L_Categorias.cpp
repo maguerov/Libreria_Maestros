@@ -43,7 +43,7 @@ void L_Categorias::desplegar()
 	NodoCategoria* aux = getCab();
 	while (aux != NULL)
 	{
-		cout << aux->getCategoria()<<endl;
+		cout << aux->getCategoria()->getDescripcion()<<endl;
 		aux = aux->getSgte();
 	}
 	cout << "Fin de la lista  " << endl;
