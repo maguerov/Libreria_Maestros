@@ -37,6 +37,10 @@ void L_Categorias::agregarInicio(Categoria* categoria)
 	setLargo(getLargo() + 1);
 }
 
+
+
+
+
 void L_Categorias::desplegar()
 {
 
@@ -59,3 +63,56 @@ bool L_Categorias::esVacia()
 }
 
 
+NodoCategoria* L_Categorias::dirNodo(string descripcion)
+{
+	NodoCategoria* aux = getCab();
+	bool encontrado = false;
+	if (aux->getCategoria()->getDescripcion().compare(descripcion) == 0) {
+		encontrado = true;
+		return aux;
+	}
+	else
+	{
+		while (aux->getSgte() != NULL)
+		{
+			if (aux->getSgte()->getCategoria()->getDescripcion().compare(descripcion) == 0) {
+				return aux->getSgte();
+				encontrado = true;
+			}
+			aux = aux->getSgte();
+		}
+	}
+	if (encontrado == false)
+	{
+		return NULL;
+	}
+}
+
+NodoCategoria* L_Categorias::dirAnterior(string descripcion)
+{
+	bool encontrado = false;
+
+	if (cat->getCategoria()->getDescripcion().compare(descripcion) == 0)
+	{
+		return NULL;
+	}
+	else
+	{
+		NodoCategoria* ant = cat;
+		while (ant->getSgte() != NULL) {
+			if (ant->getSgte()->getCategoria()->getDescripcion().compare(descripcion) == 0)
+			{
+				return ant;
+				encontrado = true;
+			}
+			ant = ant->getSgte();
+		}
+	}
+	if (encontrado == false)
+	{
+		return NULL;
+	}
+
+
+
+}

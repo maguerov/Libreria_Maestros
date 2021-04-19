@@ -41,7 +41,7 @@ int main()
 
 
 void test() {
- /*
+    
     Libro *libro = new Libro("Arthur Conan Doyle", 1, "Estudio en Escarlata", 3500, "No agotado", "Editorial Alma", 0, 1887);
     Libro* libro2 = new Libro("Dante Allighieri", 2, "La Divina Comedia", 4500, "No agotado", "Editorial Alma", 3, 1600);
     Libro* libro3 = new Libro("Mary Shelley", 3, "Frankestein", 5500, "No agotado", "Editorial Oceano", 7, 1890);
@@ -85,24 +85,27 @@ void test() {
     cout << "Eliminar el libro: " << endl;
     l->eliminar(1);
     l->desplegar();
-
-    */
-        
+ 
+   
+  /*
     Categoria* categoria = new Categoria("Terror");
     Categoria* categoria2 = new Categoria("Espiritual");
-    //Categoria* categoria3 = new Categoria("Actualidad");
+    Categoria* categoria3 = new Categoria("Actualidad");
 
     cat->agregarInicio(categoria);
     cat->agregarInicio(categoria2);
+    cat->agregarInicio(categoria3);
 
     cat->desplegar();
     
-    
-    
+        */
+
+  
 
 
 }
 
+/*
 
 // Menu principal
 void menu()
@@ -362,3 +365,4 @@ void procesarReportes(int pOpcion)
 
 
 
+*/
