@@ -18,7 +18,12 @@ public:
 	bool esVacia();//listo
 	void agregarInicio(Categoria* categoria);//listo
 	
+	/*Falta probar*/
 	NodoCategoria* dirNodo(string descripcion);
 	NodoCategoria* dirAnterior(string descripcion);
+	Categoria* buscarCategoria(string descripcion);
+	bool eliminar(string descripcion);
+
+
 };
 
