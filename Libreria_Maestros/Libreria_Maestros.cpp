@@ -100,24 +100,27 @@ void test() {
     cout << "Eliminar el libro: " << endl;
     l->eliminar(1);
     l->desplegar();
-
-    */
-        
+ 
+   
+  /*
     Categoria* categoria = new Categoria("Terror");
     Categoria* categoria2 = new Categoria("Espiritual");
-    //Categoria* categoria3 = new Categoria("Actualidad");
+    Categoria* categoria3 = new Categoria("Actualidad");
 
     cat->agregarInicio(categoria);
     cat->agregarInicio(categoria2);
+    cat->agregarInicio(categoria3);
 
     cat->desplegar();
     
-    
-    
+        */
+
+  
 
 
 }
 
+/*
 
 // Menu principal
 void menu()
@@ -377,3 +380,4 @@ void procesarReportes(int pOpcion)
 
 
 
+*/

@@ -57,7 +57,7 @@ void L_Libros::precioInventarioTotal()
 {
 	if (!esVacia()) {
 		NodoLibro* aux = cab;
-		int precioIn = 0;
+		float precioIn = 0;
 		while (aux->getSiguiente() != NULL) {
 			if (aux->getLibro()->getCantidad() != 0)
 				precioIn += aux->getLibro()->getPrecio();

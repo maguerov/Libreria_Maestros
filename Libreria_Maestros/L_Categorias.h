@@ -10,16 +10,19 @@ private:
 public:
 
 	L_Categorias();
-	int getLargo();
+	int getLargo();//listo
 	void setLargo(int largo);
-	NodoCategoria* getCab();
-	void setCab(NodoCategoria* cat);
+	NodoCategoria* getCab();//listo
+	void setCab(NodoCategoria* cat);//listo
 	void desplegar(); //listo
-	bool esVacia();
-	NodoCategoria* dirNodo(int);
-
-
+	bool esVacia();//listo
 	void agregarInicio(Categoria* categoria);//listo
+	
+	/*Falta probar*/
+	NodoCategoria* dirNodo(string descripcion);
+	NodoCategoria* dirAnterior(string descripcion);
+	Categoria* buscarCategoria(string descripcion);
+	bool eliminar(string descripcion);
 
 
 };
