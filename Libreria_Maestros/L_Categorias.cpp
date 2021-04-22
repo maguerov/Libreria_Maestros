@@ -36,6 +36,67 @@ void L_Categorias::setCab(NodoCategoria* cat)
 }
 
 
+
+/*
+void L_Categorias::agregarFinal(Categoria* categoria)
+{
+	NodoCategoria* aux = new NodoCategoria(categoria);
+	aux->setSgte(getCab());
+
+	setCab(aux);
+	setLargo(getLargo() + 1);
+}*/
+
+
+NodoCategoria* L_Categorias::dirUltimo()
+{
+	NodoCategoria* ult = getCab();
+
+	if (!esVacia()) {
+		while (ult->getSgte() != NULL) {
+			ult = ult->getSgte();
+		}
+	}
+	else {
+		ult = NULL;
+	}
+	return ult;
+	
+}
+
+void L_Categorias::agregarFinal(Categoria* categoria)
+{
+	NodoCategoria* aux = new NodoCategoria(categoria);
+
+	if (esVacia()) {
+		setCab(aux);
+		setLargo(getLargo() + 1);
+	}
+	else {
+		dirUltimo()->setSgte(aux);
+	}
+	setLargo(getLargo() + 1);
+	
+
+}
+
+
+
+
+
+void L_Categorias::desplegar()
+{
+
+	NodoCategoria* aux = getCab();
+	while (aux != NULL)
+	{
+		cout << aux->getCategoria()->getIdCat()<<" "<< aux->getCategoria()->getDescripcion()<<endl;
+		aux = aux->getSgte();
+	}
+	cout << "Fin de la lista  " << endl;
+}
+
+
 NodoCategoria* L_Categorias::dirNodo(int _idCat)
 {
 	NodoCategoria* aux = getCab();
@@ -61,88 +122,32 @@ NodoCategoria* L_Categorias::dirNodo(int _idCat)
 	}
 }
 
-void L_Categorias::agregarInicio(Categoria* categoria)
-{
-	NodoCategoria* aux = new NodoCategoria(categoria);
-	aux->setSgte(getCab());
-
-	setCab(aux);
-	setLargo(getLargo() + 1);
-}
 
 
 
-
-
-void L_Categorias::desplegar()
+NodoCategoria* L_Categorias::dirAnterior(int pId)
 {
 
-	NodoCategoria* aux = getCab();
-	while (aux != NULL)
-	{
-		cout << aux->getCategoria()->getDescripcion()<<endl;
-		aux = aux->getSgte();
-	}
-	cout << "Fin de la lista  " << endl;
-
-
-}
-
-
-
-
-NodoCategoria* L_Categorias::dirNodo(string descripcion)
-{
-	NodoCategoria* aux = getCab();
 	bool encontrado = false;
-	if (aux->getCategoria()->getDescripcion().compare(descripcion) == 0) {
-		encontrado = true;
-		return aux;
-	}
-	else
-	{
-		while (aux->getSgte() != NULL)
-		{
-			if (aux->getSgte()->getCategoria()->getDescripcion().compare(descripcion) == 0) {
-				return aux->getSgte();
+	NodoCategoria* ant = getCab();
+
+	if (!esVacia()) {
+
+		while (ant->getSgte() != NULL && !encontrado) {
+			if (ant->getSgte()->getCategoria()->getIdCat() == pId) {
 				encontrado = true;
 			}
-			aux = aux->getSgte();
-		}
-	}
-	if (encontrado == false)
-	{
-		return NULL;
-	}
-}
-
-NodoCategoria* L_Categorias::dirAnterior(string descripcion)
-{
-	bool encontrado = false;
-
-	if (cat->getCategoria()->getDescripcion().compare(descripcion) == 0)
-	{
-		return NULL;
-	}
-	else
-	{
-		NodoCategoria* ant = cat;
-		while (ant->getSgte() != NULL) {
-			if (ant->getSgte()->getCategoria()->getDescripcion().compare(descripcion) == 0)
-			{
-				return ant;
-				encontrado = true;
+			else {
+				ant = ant->getSgte();
 			}
-			ant = ant->getSgte();
 		}
 	}
-	if (encontrado == false)
-	{
+	if (encontrado) {
+		return ant;
+	}
+	else {
 		return NULL;
 	}
-
-
-
 }
 
 Categoria* L_Categorias::buscarCategoria(string descripcion)
@@ -152,6 +157,8 @@ Categoria* L_Categorias::buscarCategoria(string descripcion)
 	bool encontrado = false;
 	if (aux->getCategoria()->getDescripcion().compare(descripcion) == 0) {
 		encontrado = true;
+
+		categoria = aux->getCategoria();
 		//cout << "Categoria: " << aux->getCategoria()->getDescripcion();
 	}
 	else
@@ -171,19 +178,16 @@ Categoria* L_Categorias::buscarCategoria(string descripcion)
 	}
 
 	return categoria;
-
-
-	
 }
 
-bool L_Categorias::eliminar(string descripcion)
+bool L_Categorias::eliminar(int pId)
 {
 	
 	bool removido = true;
 	NodoCategoria* aux;
 	if (!esVacia())
 
-		if (getCab()->getCategoria()->getDescripcion().compare(descripcion) == 0) {
+		if (getCab()->getCategoria()->getIdCat()==pId) {
 			aux = getCab();
 			setCab(aux->getSgte());
 			delete aux;
@@ -192,7 +196,7 @@ bool L_Categorias::eliminar(string descripcion)
 
 		}
 		else {
-			NodoCategoria* ant = dirAnterior(descripcion);
+			NodoCategoria* ant = dirAnterior(pId);
 			if (ant != NULL) {
 				aux = ant->getSgte();
 				ant->setSgte(aux->getSgte());
@@ -204,6 +208,4 @@ bool L_Categorias::eliminar(string descripcion)
 		}
 
 	return removido;
-
-
 }

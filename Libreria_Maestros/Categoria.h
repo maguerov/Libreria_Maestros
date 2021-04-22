@@ -14,8 +14,8 @@ private:
 	L_LibroXCat* lista;
 public:
 	Categoria();
-	Categoria(string);
-	Categoria(string, L_LibroXCat*);
+	Categoria(int,string);
+	Categoria(int,string, L_LibroXCat*);
 	~Categoria();
 
 	L_LibroXCat* getLista();
