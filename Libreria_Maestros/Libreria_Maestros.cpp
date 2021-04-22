@@ -41,7 +41,7 @@ int main()
 
 
 void test() {
- /*
+ 
     Libro *libro = new Libro("Arthur Conan Doyle", 1, "Estudio en Escarlata", 3500, "No agotado", "Editorial Alma", 0, 1887);
     Libro* libro2 = new Libro("Dante Allighieri", 2, "La Divina Comedia", 4500, "No agotado", "Editorial Alma", 3, 1600);
     Libro* libro3 = new Libro("Mary Shelley", 3, "Frankestein", 5500, "No agotado", "Editorial Oceano", 7, 1890);
@@ -53,6 +53,21 @@ void test() {
 
     l->desplegar();
 
+    cout << "______________ " << endl;
+    cout << "______________ " << endl;
+
+    cout << "modificar existencia " << endl;
+    l->modificarExistencia(2, 2);
+    l->desplegar();
+    cout << "______________ " << endl;
+
+    cout << "modificar existencia " << endl;
+    l->modificarExistencia(2, 0);
+    l->desplegar();
+    cout << "______________ " << endl;
+
+
+    /**
     l->precioInventarioTotal();
 
 
@@ -70,7 +85,7 @@ void test() {
     cout << "Lista de libros no agotados: " << endl;
     l->librosNoAgotados();
    
-
+   */
     cout << "---" << endl;
     cout << "Actualizar precio: " << endl;
     Libro* lib = new Libro();
@@ -80,7 +95,7 @@ void test() {
     l->actualizarPrecio(5, 1);
     cout << "Despues de actualizar: " << endl;
     lib->toString();
-
+    /*
     cout << "---" << endl;
     cout << "Eliminar el libro: " << endl;
     l->eliminar(1);

@@ -18,6 +18,7 @@ public:
 	int cantidadLibrosAgotados();//Sirve
 	void librosAgotados();//Sirve
 	void librosNoAgotados();//Sirve
+	bool modificarExistencia(int codigo, int numero);//Sirve
 	bool actualizarPrecio(int porcentaje, int codigo);//Sirve
 	bool eliminar(int codigo);//Sirve
 	NodoLibro* dirNodo(int codigo);

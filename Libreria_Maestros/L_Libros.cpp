@@ -106,6 +106,26 @@ void L_Libros::librosNoAgotados()
 	}
 }
 
+bool L_Libros::modificarExistencia(int codigo, int numero)
+{
+	bool actualizado = false;
+	Libro *libro = buscarCodigo(codigo);
+
+	if (libro->getCodigo() != NULL)
+	{
+		libro->setCantidad(numero);
+
+		if (libro->getCantidad() == 0)
+		{
+			libro->setEstado("Agotado");
+		}
+		actualizado = true;
+	}
+
+	return actualizado;
+
+}
+
 bool L_Libros::actualizarPrecio(int porcentaje, int codigo)
 {
 	bool encontrado = false;
@@ -238,7 +258,7 @@ Libro *L_Libros::buscarCodigo(int codigo)
 		while (aux->getSiguiente() != NULL)
 		{
 			if (aux->getSiguiente()->getLibro()->getCodigo() == codigo) {
-				lib = aux->getLibro();
+				lib = aux->getSiguiente()->getLibro();
 				encontrado = true;
 			}
 			aux = aux->getSiguiente();

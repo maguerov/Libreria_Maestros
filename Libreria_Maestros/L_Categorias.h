@@ -16,7 +16,11 @@ public:
 	void setCab(NodoCategoria* cat);
 	void desplegar(); //listo
 	bool esVacia();
+	NodoCategoria* dirNodo(int);
+
+
 	void agregarInicio(Categoria* categoria);//listo
+
 
 };
 

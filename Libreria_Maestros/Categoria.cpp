@@ -9,6 +9,16 @@ Categoria::Categoria()
 	this->descripcion = "";
 }
 
+int Categoria::getIdCat()
+{
+	return idCat;
+}
+
+void Categoria::setIdCat(int _idCat)
+{
+	this->idCat = _idCat;
+}
+
 
 Categoria::Categoria(string descripcion)
 {

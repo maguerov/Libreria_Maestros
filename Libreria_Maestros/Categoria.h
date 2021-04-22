@@ -9,6 +9,7 @@ using namespace std;
 class Categoria
 {
 private:
+	int idCat;
 	string descripcion;
 	L_LibroXCat* lista;
 public:
@@ -20,7 +21,11 @@ public:
 	L_LibroXCat* getLista();
 	void setLista(L_LibroXCat*);
 
+	int getIdCat();
+	void setIdCat(int);
+
 	string getDescripcion();
 	void setDescripcion(string);
+
 };
 #endif

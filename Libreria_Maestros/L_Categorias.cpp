@@ -7,6 +7,13 @@ L_Categorias::L_Categorias()
 	largo = 0;
 }
 
+bool L_Categorias::esVacia()
+{
+	if (largo < 1)
+		return true;
+	return false;
+}
+
 
 int L_Categorias::getLargo()
 {
@@ -26,6 +33,32 @@ NodoCategoria* L_Categorias::getCab()
 void L_Categorias::setCab(NodoCategoria* cat)
 {
 	this->cat = cat;
+}
+
+
+NodoCategoria* L_Categorias::dirNodo(int _idCat)
+{
+	NodoCategoria* aux = getCab();
+	bool encontrado = false;
+	if (aux->getCategoria()->getIdCat() == _idCat) {
+		encontrado = true;
+		return aux;
+	}
+	else
+	{
+		while (aux->getSgte() != NULL)
+		{
+			if (aux->getSgte()->getCategoria()->getIdCat() == _idCat) {
+				return aux->getSgte();
+				encontrado = true;
+			}
+			aux = aux->getSgte();
+		}
+	}
+	if (encontrado == false)
+	{
+		return NULL;
+	}
 }
 
 void L_Categorias::agregarInicio(Categoria* categoria)
@@ -51,11 +84,6 @@ void L_Categorias::desplegar()
 
 }
 
-bool L_Categorias::esVacia()
-{
-	if (largo < 1)
-		return true;
-	return false;
-}
+
 
 
