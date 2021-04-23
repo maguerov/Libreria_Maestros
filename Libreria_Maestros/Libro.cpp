@@ -1,12 +1,10 @@
 #include "Libro.h"
 
-Libro::Libro(string autor, int codigo, string tituloLibro, float precio, string estado, string editorial, int cantInventario, int annio)
+Libro::Libro(string autor, string tituloLibro, float precio, string editorial, int cantInventario, int annio)
 {
 	this->autor = autor;
-	this->codigo = codigo;
 	this->tituloLibro = tituloLibro;
 	this->precio = precio;
-	this->estado = estado;
 	this->editorial = editorial;
 	this->cantInventario = cantInventario;
 	this->annio = annio;
@@ -87,6 +85,16 @@ string Libro::getEstado()
 void Libro::setEstado(string estatus)
 {
 	this->estado = estatus;
+}
+
+string Libro::getEditorial()
+{
+	return editorial;
+}
+
+void Libro::setEditorial(string editorial)
+{
+	this->editorial = editorial;
 }
 
 int Libro::getCantidad()

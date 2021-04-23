@@ -39,7 +39,18 @@ void L_Libros::desplegar()
 
 void L_Libros::agregarInicio(Libro* libro)
 {
+	if (libro->getCantidad() > 0) {
+		libro->setEstado("Disponible");
+	}
+	else
+	{
+		libro->setEstado("Agotado");
+	}
+
+	libro->setCodigo(getLargo() + 1);
+
 	NodoLibro* aux = new NodoLibro(libro);
+
 	aux->setSiguiente(cab);
 	setCab(aux);
 	setLargo(getLargo() + 1);

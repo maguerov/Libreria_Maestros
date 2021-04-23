@@ -16,7 +16,7 @@ private:
 	int cantInventario;
 
 public:
-	Libro(string autor, int codigo, string tituloLibro, float precio, string estado, string editorial, int cantInventario, int annio);
+	Libro(string autor, string tituloLibro, float precio, string editorial, int cantInventario, int annio);
 	~Libro();
 	Libro();
 	string getAutor();
@@ -29,6 +29,8 @@ public:
 	void setPrecio(float precio);
 	string getEstado();
 	void setEstado(string estatus);
+	string getEditorial();
+	void setEditorial(string editorial);
 	int getCantidad();
 	void setCantidad(int cantidad);
 	int getAnnio();

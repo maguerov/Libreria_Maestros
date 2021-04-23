@@ -27,13 +27,20 @@ void procesarReportes(int opcion);
 int opcionMenu;
 int nuevoNumero;
 int posicion;
+
 L_Libros* l = new L_Libros();
+Libro* libro = new Libro();
+string titulo, autor, editorial, estado;
+int codigo, anio, cantInventario;
+float precio;
+
+
 L_Categorias* cat = new L_Categorias();
 
 int main()
 {
     test();
-    //menu();
+    menu();
     system("Pause");
     return 0;
 }
@@ -42,14 +49,13 @@ int main()
 
 void test() {
  
-    Libro *libro = new Libro("Arthur Conan Doyle", 1, "Estudio en Escarlata", 3500, "No agotado", "Editorial Alma", 0, 1887);
-    Libro* libro2 = new Libro("Dante Allighieri", 2, "La Divina Comedia", 4500, "No agotado", "Editorial Alma", 3, 1600);
-    Libro* libro3 = new Libro("Mary Shelley", 3, "Frankestein", 5500, "No agotado", "Editorial Oceano", 7, 1890);
-    Libro* libro4 = new Libro("J.R.R Tolkien", 4, "Silmarillion", 7500, "No agotado", "Editorial Alma", 3, 1928);
-   l->agregarInicio(libro);
+
+    Libro* libro2 = new Libro("Dante Allighieri", "La Divina Comedia", 4500, "Editorial Alma", 3, 1600);
+  //  Libro* libro3 = new Libro("Mary Shelley", 3, "Frankestein", 5500, "No agotado", "Editorial Oceano", 7, 1890);
+   // Libro* libro4 = new Libro("J.R.R Tolkien", 4, "Silmarillion", 7500, "No agotado", "Editorial Alma", 3, 1928);
     l->agregarInicio(libro2);
-    l->agregarInicio(libro3);
-    l->agregarInicio(libro4);
+   // l->agregarInicio(libro3);
+   // l->agregarInicio(libro4);
 
     cout << "Lista de todos los libros" << endl;
     l->desplegar();
@@ -121,6 +127,10 @@ void test() {
     // cat->dirNodo(1)->: busca el nodoCategoria, es decir el puntero en el cual se encuentra la categoria en la que queremos agregar el libro
     //getLista()-: llamar a la sublista que vive dentro del nodoCategoria 
     //->agregarLibro(l->dirNodo(1));: funcion que agrega el libro y recibe el nodoLibro como parametro 
+  
+    
+    /*
+
     cat->dirNodo(1)->getLista()->agregarLibro(l->dirNodo(1));
     //Crear buscarCategoria(descripcion) que devuelva el NodoCategoria
     cat->dirNodo(1)->getLista()->agregarLibro(l->dirNodo(3));
@@ -131,6 +141,8 @@ void test() {
 
     cout << "Lista de libros para la categoria dada" << endl;
     cat->dirNodo(1)->getLista()->desplegar();//La sublista que contiene todos los libros dentro de esta categoria
+
+    */
        
 
   
@@ -138,7 +150,7 @@ void test() {
 
 }
 
-/*
+
 
 // Menu principal
 void menu()
@@ -167,11 +179,11 @@ void procesarOpcion(int pOpcion)
         break;
 
     case 2:
-        menuCategorias();
+     //   menuCategorias();
         break;
 
     case 3:
-        menuReportes();
+    //    menuReportes();
         break;
 
     case 0:
@@ -216,6 +228,32 @@ void procesarLibros(int pOpcion)
 
     case 1:
 
+        cout << "Digite el titulo o nombre del libro que desea agregar" << endl;
+        cin >> titulo;
+        libro->setTituloLibro(titulo);
+
+        cout << "Digite el nombre del autor del libro" << endl;
+        cin >> autor;
+        libro->setAutor(autor);
+
+        cout << "Digite la editorial a la que pertenece el libro" << endl;
+        cin >> editorial;
+        libro->setEditorial(editorial);
+
+        cout << "Digite el año de publicacion del libro" << endl;
+        cin >> anio;
+        libro->setAnnio(anio);
+
+        cout << "Digite el precio del libro" << endl;
+        cin >> precio;
+        libro->setPrecio(precio);
+
+        cout << "Digite la cantidad de ejemplares a guardar en el inventario" << endl;
+        cin >> cantInventario;
+        libro->setCantidad(cantInventario);
+
+       // Libro* libro = new Libro(autor, titulo, precio, editorial, cantInventario, anio)
+        l->agregarInicio(libro);;
         break;
 
     case 2:
@@ -254,7 +292,7 @@ void procesarLibros(int pOpcion)
     system("pause");
     menuLibros();
 }
-
+/*
 // Menu categorias
 void menuCategorias()
 {
@@ -394,8 +432,4 @@ void procesarReportes(int pOpcion)
     cout << "\n";
     system("pause");
     menuReportes();
-}
-
-
-
-*/
+}*/
