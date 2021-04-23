@@ -39,7 +39,7 @@ void L_LibroXCat::setNodoI(NodoIntermedio* nodoI) {
     this->nodoI = nodoI;
 }
 
-void L_LibroXCat::agregarArticulo(NodoLibro* nodoA) {
+void L_LibroXCat::agregarLibro(NodoLibro* nodoA) {
     NodoIntermedio* nuevoNodoI = new NodoIntermedio(nodoA);
     if (esVacia())
         this->setNodoI(nuevoNodoI);

@@ -41,18 +41,19 @@ int main()
 
 
 void test() {
-    /*
+ 
     Libro *libro = new Libro("Arthur Conan Doyle", 1, "Estudio en Escarlata", 3500, "No agotado", "Editorial Alma", 0, 1887);
     Libro* libro2 = new Libro("Dante Allighieri", 2, "La Divina Comedia", 4500, "No agotado", "Editorial Alma", 3, 1600);
     Libro* libro3 = new Libro("Mary Shelley", 3, "Frankestein", 5500, "No agotado", "Editorial Oceano", 7, 1890);
     Libro* libro4 = new Libro("J.R.R Tolkien", 4, "Silmarillion", 7500, "No agotado", "Editorial Alma", 3, 1928);
-    l->agregarInicio(libro);
+   l->agregarInicio(libro);
     l->agregarInicio(libro2);
     l->agregarInicio(libro3);
     l->agregarInicio(libro4);
 
+    cout << "Lista de todos los libros" << endl;
     l->desplegar();
-
+    /*
     cout << "______________ " << endl;
     cout << "______________ " << endl;
 
@@ -111,17 +112,25 @@ void test() {
     cat->agregarFinal(categoria2);
     cat->agregarFinal(categoria3);
 
-    cat->desplegar();
-
+  //  cat->desplegar();
+    /*
     cout<<cat->dirNodo(1)<<endl;
     cout << cat->dirNodo(2) << endl;
     cout << cat->dirNodo(3) << endl;
+    */   
+    // cat->dirNodo(1)->: busca el nodoCategoria, es decir el puntero en el cual se encuentra la categoria en la que queremos agregar el libro
+    //getLista()-: llamar a la sublista que vive dentro del nodoCategoria 
+    //->agregarLibro(l->dirNodo(1));: funcion que agrega el libro y recibe el nodoLibro como parametro 
+    cat->dirNodo(1)->getLista()->agregarLibro(l->dirNodo(1));
+    //Crear buscarCategoria(descripcion) que devuelva el NodoCategoria
+    cat->dirNodo(1)->getLista()->agregarLibro(l->dirNodo(3));
 
-    cout << cat->buscarCategoria("Espiritual")->getDescripcion()<<endl;
-    
+    cout << "Lista de todas las categorias" << endl;
+    cat->desplegar();//La lista de todas las categorias 
 
 
-    
+    cout << "Lista de libros para la categoria dada" << endl;
+    cat->dirNodo(1)->getLista()->desplegar();//La sublista que contiene todos los libros dentro de esta categoria
        
 
   

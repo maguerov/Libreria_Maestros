@@ -11,6 +11,7 @@ class NodoCategoria
 private:
 	Categoria* categoria;
 	NodoCategoria* sgte;
+	L_LibroXCat* lista;
 public:
 	NodoCategoria();
 	~NodoCategoria();
@@ -21,5 +22,8 @@ public:
 
 	NodoCategoria* getSgte();
 	void setSgte(NodoCategoria* nodoCategoria);
+
+	L_LibroXCat* getLista();
+	void setLista(L_LibroXCat*);
 };
 #endif

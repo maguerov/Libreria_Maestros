@@ -11,15 +11,13 @@ class Categoria
 private:
 	int idCat;
 	string descripcion;
-	L_LibroXCat* lista;
 public:
 	Categoria();
 	Categoria(string);
-	Categoria(int,string, L_LibroXCat*);
+	Categoria(int,string);
 	~Categoria();
 
-	L_LibroXCat* getLista();
-	void setLista(L_LibroXCat*);
+
 
 	int getIdCat();
 	void setIdCat(int);

@@ -30,7 +30,7 @@ public:
 	NodoIntermedio* getNodoI();
 	void setNodoI(NodoIntermedio*);
 
-	void agregarArticulo(NodoLibro*);
+	void agregarLibro(NodoLibro*);
 
 	void desplegar();
 
