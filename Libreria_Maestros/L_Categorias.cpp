@@ -66,6 +66,7 @@ NodoCategoria* L_Categorias::dirUltimo()
 
 void L_Categorias::agregarFinal(Categoria* categoria)
 {
+	categoria->setIdCat(getLargo() + 1);
 	NodoCategoria* aux = new NodoCategoria(categoria);
 
 	if (esVacia()) {

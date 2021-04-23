@@ -10,9 +10,8 @@ Categoria::Categoria()
 	this->idCat = NULL;
 }
 
-Categoria::Categoria(int pId,string descripcion)
+Categoria::Categoria(string descripcion)
 {
-	this->idCat = pId;
 	this->descripcion = descripcion;
 	this->lista = new L_LibroXCat();
 }

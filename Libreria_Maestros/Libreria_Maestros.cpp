@@ -103,9 +103,9 @@ void test() {
  
     */
   
-    Categoria* categoria = new Categoria(1, "Terror");
-    Categoria* categoria2 = new Categoria(2,"Espiritual");
-    Categoria* categoria3 = new Categoria(3,"Actualidad");
+    Categoria* categoria = new Categoria("Terror");
+    Categoria* categoria2 = new Categoria("Espiritual");
+    Categoria* categoria3 = new Categoria("Actualidad");
 
     cat->agregarFinal(categoria);
     cat->agregarFinal(categoria2);
