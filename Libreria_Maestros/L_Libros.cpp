@@ -57,7 +57,7 @@ void L_Libros::precioInventarioTotal()
 {
 	if (!esVacia()) {
 		NodoLibro* aux = cab;
-		int precioIn = 0;
+		float precioIn = 0;
 		while (aux->getSiguiente() != NULL) {
 			if (aux->getLibro()->getCantidad() != 0)
 				precioIn += aux->getLibro()->getPrecio();
@@ -104,6 +104,26 @@ void L_Libros::librosNoAgotados()
 			aux = aux->getSiguiente();
 		}
 	}
+}
+
+bool L_Libros::modificarExistencia(int codigo, int numero)
+{
+	bool actualizado = false;
+	Libro *libro = buscarCodigo(codigo);
+
+	if (libro->getCodigo() != NULL)
+	{
+		libro->setCantidad(numero);
+
+		if (libro->getCantidad() == 0)
+		{
+			libro->setEstado("Agotado");
+		}
+		actualizado = true;
+	}
+
+	return actualizado;
+
 }
 
 bool L_Libros::actualizarPrecio(int porcentaje, int codigo)
@@ -238,7 +258,7 @@ Libro *L_Libros::buscarCodigo(int codigo)
 		while (aux->getSiguiente() != NULL)
 		{
 			if (aux->getSiguiente()->getLibro()->getCodigo() == codigo) {
-				lib = aux->getLibro();
+				lib = aux->getSiguiente()->getLibro();
 				encontrado = true;
 			}
 			aux = aux->getSiguiente();

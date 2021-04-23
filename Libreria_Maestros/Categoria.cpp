@@ -7,16 +7,17 @@ Categoria::Categoria()
 {
 	this->lista = new L_LibroXCat();
 	this->descripcion = "";
+	this->idCat = NULL;
 }
-
 
 Categoria::Categoria(string descripcion)
 {
 	this->descripcion = descripcion;
 	this->lista = new L_LibroXCat();
 }
-Categoria::Categoria(string descripcion, L_LibroXCat* lista)
+Categoria::Categoria(int pId, string descripcion, L_LibroXCat* lista)
 {
+	this->idCat = pId;
 	this->descripcion = descripcion;
 	this->lista = lista;
 }
@@ -24,6 +25,19 @@ Categoria::~Categoria()
 {
 
 }
+
+
+int Categoria::getIdCat()
+{
+	return idCat;
+}
+
+void Categoria::setIdCat(int _idCat)
+{
+	this->idCat = _idCat;
+}
+
+
 string Categoria::getDescripcion() {
 	return this->descripcion;
 }

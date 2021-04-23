@@ -1,4 +1,7 @@
 #include "L_LibroxCat.h"
+#include "L_Categorias.h"
+#include "Categoria.h"
+#include "NodoCategoria.h"
 #include "iostream"
 using namespace std;
 
@@ -56,4 +59,20 @@ void L_LibroXCat::desplegar() {
         aux->getNodoLibro()->getLibro()->toString();
         aux = aux->getSgte();
     }
+}
+
+
+void L_LibroXCat::desplegarLibros()
+{
+    // ?
+}
+
+// NO SE SI SIRVE - FALTA HACER LA FUNCION DE GETLISTALIBROSCAT
+void L_LibroXCat::consultaLibrosCat(int _idCat)
+{
+    NodoCategoria* aux = L_Categorias().dirNodo(_idCat);
+    if (aux != NULL) {
+        //aux->getListaLibroCat()->desplegar();
+    }
+
 }

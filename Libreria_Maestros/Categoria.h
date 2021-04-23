@@ -9,18 +9,23 @@ using namespace std;
 class Categoria
 {
 private:
+	int idCat;
 	string descripcion;
 	L_LibroXCat* lista;
 public:
 	Categoria();
 	Categoria(string);
-	Categoria(string, L_LibroXCat*);
+	Categoria(int,string, L_LibroXCat*);
 	~Categoria();
 
 	L_LibroXCat* getLista();
 	void setLista(L_LibroXCat*);
 
+	int getIdCat();
+	void setIdCat(int);
+
 	string getDescripcion();
 	void setDescripcion(string);
+
 };
 #endif

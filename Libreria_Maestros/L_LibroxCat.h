@@ -11,7 +11,11 @@ class L_LibroXCat
 {
 private:
 	int largo;
-	NodoIntermedio* nodoI;
+	int idCat;
+	int idLibro;
+	NodoIntermedio* sgte;
+	NodoLibro* ptrLibro;
+	NodoIntermedio* nodoI; 
 
 public:
 	L_LibroXCat();
@@ -29,5 +33,8 @@ public:
 	void agregarArticulo(NodoLibro*);
 
 	void desplegar();
+
+	void desplegarLibros();
+	void consultaLibrosCat(int);
 };
 #endif
