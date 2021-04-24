@@ -26,7 +26,9 @@ public:
 
 
 	/*Modificar el buscar para q devuelva lo q se necesite*/
-	Categoria* buscarCategoria(string descripcion);
+	//Categoria* buscarCategoria(string descripcion);
+
+	NodoCategoria* buscarCategoria(string descripcion);
 	
 
 

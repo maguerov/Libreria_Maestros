@@ -150,7 +150,7 @@ NodoCategoria* L_Categorias::dirAnterior(int pId)
 		return NULL;
 	}
 }
-
+/*
 Categoria* L_Categorias::buscarCategoria(string descripcion)
 {
 	NodoCategoria* aux = getCab();
@@ -160,7 +160,7 @@ Categoria* L_Categorias::buscarCategoria(string descripcion)
 		encontrado = true;
 
 		categoria = aux->getCategoria();
-		//cout << "Categoria: " << aux->getCategoria()->getDescripcion();
+
 	}
 	else
 	{
@@ -179,6 +179,36 @@ Categoria* L_Categorias::buscarCategoria(string descripcion)
 	}
 
 	return categoria;
+}
+*/
+
+
+NodoCategoria* L_Categorias::buscarCategoria(string descripcion)
+{
+	NodoCategoria* aux = getCab();
+	NodoCategoria* nodoCategoria = new NodoCategoria();
+	bool encontrado = false;
+	if (aux->getCategoria()->getDescripcion().compare(descripcion) == 0) {
+		encontrado = true;
+
+		nodoCategoria = aux;
+	}
+	else
+	{
+		while (aux->getSgte() != NULL)
+		{
+			if (aux->getSgte()->getCategoria()->getDescripcion().compare(descripcion) == 0) {
+				nodoCategoria = aux;
+				encontrado = true;
+			}
+			aux = aux->getSgte();
+		}
+	}
+	if (encontrado == false)
+	{
+		return NULL;
+	}
+	return nodoCategoria;
 }
 
 bool L_Categorias::eliminar(int pId)
