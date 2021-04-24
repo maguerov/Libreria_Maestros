@@ -53,15 +53,22 @@ int main()
 void test() {
  
 
-    Libro* libro2 = new Libro("Dante Allighieri", "La Divina Comedia", 4500, "Editorial Alma", 3, 1600);
+
   //  Libro* libro3 = new Libro("Mary Shelley", 3, "Frankestein", 5500, "No agotado", "Editorial Oceano", 7, 1890);
-   // Libro* libro4 = new Libro("J.R.R Tolkien", 4, "Silmarillion", 7500, "No agotado", "Editorial Alma", 3, 1928);
+
+    Libro* libro4 = new Libro("J.R.R Tolkien", "Silmarillion", 7500.0, "Editorial Alma", 3, 1928);
+    Libro* libro2 = new Libro("Dante Allighieri", "La Divina Comedia", 4500.0, "Editorial Alma", 3, 1600);
     l->agregarInicio(libro2);
-   // l->agregarInicio(libro3);
+    l->agregarInicio(libro4);
    // l->agregarInicio(libro4);
 
     cout << "Lista de todos los libros" << endl;
     l->desplegar();
+
+    Libro* libroTemp = l->buscarNombre("La Divina Comedia")->getLibro();
+    libroTemp->toString();
+
+
     /*
     cout << "______________ " << endl;
     cout << "______________ " << endl;
@@ -80,7 +87,7 @@ void test() {
    
     l->precioInventarioTotal();
 
-
+    
 
 
   
@@ -120,6 +127,14 @@ void test() {
     cat->agregarFinal(categoria);
     cat->agregarFinal(categoria2);
     cat->agregarFinal(categoria3);
+    cout << "Lista de libros para la categoria dada" << endl;
+    cat->buscarCategoria("Terror")->getLista()->desplegar();
+
+    cat->buscarCategoria("Terror")->getLista()->agregarLibro(l->buscarNombre("La Divina Comedia"));
+    cout << "Lista de libros para la categoria dada" << endl;
+
+    cat->buscarCategoria("Terror")->getLista()->desplegar();
+
 
   //  cat->desplegar();
     /*
@@ -217,6 +232,7 @@ void menuLibros()
     cad += "5. Desplegar lista de libros. \n";
     cad += "6. Actualizacion automatica de precios. \n";
     cad += "7. Volver al menu principal. \n";
+    //Falta el desplegar libro (solo uno) 
     cad += "0. Salir \n";
     cout << cad;
     cout << "\n";
