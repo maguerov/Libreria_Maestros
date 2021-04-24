@@ -18,11 +18,12 @@ void procesarOpcion(int opcion);
 void menuLibros();
 void procesarLibros(int opcion);
 
-void menuCategorias();
+/*void menuCategorias();
 void procesarCategorias(int opcion);
 
 void menuReportes();
-void procesarReportes(int opcion);
+void procesarReportes(int opcion);*/
+
 
 int opcionMenu;
 int nuevoNumero;
@@ -30,7 +31,9 @@ int posicion;
 
 L_Libros* l = new L_Libros();
 Libro* libro = new Libro();
-string titulo, autor, editorial, estado;
+string titulo;
+string autor;
+string editorial;
 int codigo, anio, cantInventario;
 float precio;
 
@@ -227,21 +230,24 @@ void procesarLibros(int pOpcion)
     {
 
     case 1:
-
         cout << "Digite el titulo o nombre del libro que desea agregar" << endl;
-        cin >> titulo;
+        cin.ignore();
+        getline(cin, titulo);
         libro->setTituloLibro(titulo);
 
         cout << "Digite el nombre del autor del libro" << endl;
-        cin >> autor;
+        cin.ignore();
+        getline(cin, autor);
         libro->setAutor(autor);
 
         cout << "Digite la editorial a la que pertenece el libro" << endl;
-        cin >> editorial;
+        cin.ignore();
+        getline(cin, editorial);
         libro->setEditorial(editorial);
 
         cout << "Digite el año de publicacion del libro" << endl;
         cin >> anio;
+        cin.ignore();
         libro->setAnnio(anio);
 
         cout << "Digite el precio del libro" << endl;
@@ -252,8 +258,7 @@ void procesarLibros(int pOpcion)
         cin >> cantInventario;
         libro->setCantidad(cantInventario);
 
-       // Libro* libro = new Libro(autor, titulo, precio, editorial, cantInventario, anio)
-        l->agregarInicio(libro);;
+        l->agregarInicio(libro);
         break;
 
     case 2:
@@ -269,7 +274,7 @@ void procesarLibros(int pOpcion)
         break;
 
     case 5:
-
+        l->desplegar();
         break;
 
     case 6:
@@ -292,6 +297,7 @@ void procesarLibros(int pOpcion)
     system("pause");
     menuLibros();
 }
+
 /*
 // Menu categorias
 void menuCategorias()
