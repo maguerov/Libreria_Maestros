@@ -43,9 +43,10 @@ L_Categorias* cat = new L_Categorias();
 int main()
 {
     test();
+    /*
     menu();
     system("Pause");
-    return 0;
+    return 0;*/
 }
 
 
@@ -53,7 +54,7 @@ int main()
 void test() {
  
 
-
+    /*
   //  Libro* libro3 = new Libro("Mary Shelley", 3, "Frankestein", 5500, "No agotado", "Editorial Oceano", 7, 1890);
 
     Libro* libro4 = new Libro("J.R.R Tolkien", "Silmarillion", 7500.0, "Editorial Alma", 3, 1928);
@@ -69,7 +70,7 @@ void test() {
     libroTemp->toString();
 
 
-    /*
+    
     cout << "______________ " << endl;
     cout << "______________ " << endl;
 
@@ -118,7 +119,7 @@ void test() {
     l->eliminar(1);
     l->desplegar();
  
-    */
+   
   
     Categoria* categoria = new Categoria("Terror");
     Categoria* categoria2 = new Categoria("Espiritual");
@@ -160,8 +161,30 @@ void test() {
     cout << "Lista de libros para la categoria dada" << endl;
     cat->dirNodo(1)->getLista()->desplegar();//La sublista que contiene todos los libros dentro de esta categoria
 
-    */
-       
+    */ 
+
+    Categoria* categoria = new Categoria("Terror");
+    Categoria* categoria2 = new Categoria("Espiritual");
+    Categoria* categoria3 = new Categoria("Actualidad");
+    cat->agregarFinal(categoria);
+    cat->agregarFinal(categoria2);
+    cat->agregarFinal(categoria3);
+
+    cat->desplegar();
+
+  //prueba modificar categoria
+
+    if (cat->ModificarCategoria("Terror")) {
+
+        cout << "Categoria modificada"<<endl;
+    }
+    else {
+        cout << "Categoria no pudo ser modificada" << endl;
+    }
+
+    cat->desplegar();
+
+
 
   
 
