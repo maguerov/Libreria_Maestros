@@ -218,38 +218,42 @@ bool L_Categorias::ModificarCategoria(string descripcion)
 
 NodoCategoria* L_Categorias::buscarCategoria(string descripcion)
 {
-	bool encontrado = false;
-	NodoCategoria* aux = getCab();
-	NodoCategoria* nodoCategoria = new NodoCategoria();
-
-	string pmin = aux->getCategoria()->getDescripcion(); // pmin = palabra en minúscula
-	transform(pmin.begin(), pmin.end(), pmin.begin(), ::tolower);  // transforma una cadena de caracteres a minusculas
-	transform(descripcion.begin(), descripcion.end(), descripcion.begin(), ::tolower);
-	
-	if (pmin.compare(descripcion) == 0) {
-		encontrado = true;
-
-		nodoCategoria = aux;
-	}
-	else
+	if (!esVacia())
 	{
-		while (aux->getSgte() != NULL)
-		{
-			string pmin = aux->getSgte()->getCategoria()->getDescripcion();
-			transform(pmin.begin(), pmin.end(), pmin.begin(), ::tolower);
+		bool encontrado = false;
+		NodoCategoria* aux = getCab();
+		NodoCategoria* nodoCategoria = new NodoCategoria();
 
-			if (pmin.compare(descripcion) == 0) {
-				nodoCategoria = aux->getSgte();
-				encontrado = true;
-			}
-			aux = aux->getSgte();
+		string pmin = aux->getCategoria()->getDescripcion(); // pmin = palabra en minúscula
+		transform(pmin.begin(), pmin.end(), pmin.begin(), ::tolower);  // transforma una cadena de caracteres a minusculas
+		transform(descripcion.begin(), descripcion.end(), descripcion.begin(), ::tolower);
+
+		if (pmin.compare(descripcion) == 0) {
+			encontrado = true;
+
+			nodoCategoria = aux;
 		}
+		else
+		{
+			while (aux->getSgte() != NULL)
+			{
+				string pmin = aux->getSgte()->getCategoria()->getDescripcion();
+				transform(pmin.begin(), pmin.end(), pmin.begin(), ::tolower);
+
+				if (pmin.compare(descripcion) == 0) {
+					nodoCategoria = aux->getSgte();
+					encontrado = true;
+				}
+				aux = aux->getSgte();
+			}
+		}
+		if (encontrado == false)
+		{
+			return NULL;
+		}
+		return nodoCategoria;
 	}
-	if (encontrado == false)
-	{
-		return NULL;
-	}
-	return nodoCategoria;
+	return NULL;
 }
 
 bool L_Categorias::eliminar(int pId)
