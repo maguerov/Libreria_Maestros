@@ -14,7 +14,7 @@ public:
 	void desplegar();//Sirve
 	void agregarInicio(Libro* libro);//Sirve
 	bool esVacia();//Sirve
-	void precioInventarioTotal();//Sirve
+	float precioInventarioTotal();//Sirve
 	int cantidadLibrosAgotados();//Sirve
 	void librosAgotados();//Sirve
 	void librosNoAgotados();//Sirve

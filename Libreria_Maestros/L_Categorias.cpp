@@ -218,7 +218,7 @@ bool L_Categorias::ModificarCategoria(string descripcion)
 
 NodoCategoria* L_Categorias::buscarCategoria(string descripcion)
 {
-	if (!esVacia())
+	if (largo > 1)
 	{
 		bool encontrado = false;
 		NodoCategoria* aux = getCab();
