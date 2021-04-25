@@ -44,11 +44,14 @@ L_Categorias* lCat = new L_Categorias();
 NodoCategoria* nodoCat = new NodoCategoria();
 Categoria* categoria;
 char descripcion[50];
+int elim;
 
 int main()
 {
 	test();
 
+
+	
 	menu();
 	system("Pause");
 	return 0;
@@ -75,11 +78,11 @@ void test() {
     l->agregarInicio(libro2);
     l->agregarInicio(libro4);
 
-	Categoria* categoria = new Categoria("Terror");
+	//Categoria* categoria = new Categoria("Terror");
 	// Categoria* categoria2 = new Categoria("Espiritual");
 	 //Categoria* categoria3 = new Categoria("Actualidad");
 
-	lCat->agregarFinal(categoria);
+	//lCat->agregarFinal(categoria);
 	//lCat->agregarFinal(categoria2);
 	//lCat->agregarFinal(categoria3);
 
@@ -178,11 +181,21 @@ void test() {
 
 	cat->desplegar();
 
-		*/
+		
 
+		Categoria* categoria = new Categoria("Terror");
+			 Categoria* categoria2 = new Categoria("Espiritual");
+			 Categoria* categoria3 = new Categoria("Actualidad");
 
+			lCat->agregarFinal(categoria);
+			lCat->agregarFinal(categoria2);
+			lCat->agregarFinal(categoria3);
 
+			lCat->desplegar();
 
+			lCat->eliminar();
+			lCat->desplegar();
+			*/
 }
 
 
@@ -524,17 +537,18 @@ void procesarCategorias(int pOpcion)
         break;
 
 	case 2:
+		lCat->desplegar();
 		cout << "Digite la descripcion de la categoria que desea modidicar" << endl;
 		cin.getline(descripcion, 50);
 		cin.ignore();
 		nodoCat = lCat->buscarCategoria(descripcion);
 
 		if (nodoCat != NULL) {
-			cout << "Digite la nueva descripcion para la categoria" << endl;
-			cin.getline(descripcion, 50);
-			cin.ignore();
+			//cout << "Digite la nueva descripcion para la categoria" << endl;
+			//cin.getline(descripcion, 50);
+			//cin.ignore();
 			nodoCat->getCategoria()->setDescripcion(descripcion);
-			if (lCat->ModificarCategoria(nodoCat->getCategoria()->getDescripcion())) {
+			if (lCat->modificarCategoria(nodoCat->getCategoria()->getDescripcion())) {
 				cout << " - Categoria modificada - " << endl;
 				nodoCat->toString();
 			}
@@ -578,27 +592,21 @@ void procesarCategorias(int pOpcion)
 		break;
 
 	case 4:
-		cout << "Digite la categoria que desea eliminar" << endl;
-		cin.getline(descripcion, 50);
+		
+	
+		lCat->desplegar();
+		cout << "Digite el ID de la categoria que desea eliminar" << endl;
+		cin >> elim;
 		cin.ignore();
-		categoria->setDescripcion(descripcion);
-		nodoCat = lCat->buscarCategoria(categoria->getDescripcion());
 
-		if (nodoCat != NULL)
-		{
-			if (lCat->eliminar(nodoCat->getCategoria()->getIdCat())) {
-				cout << "La categoria - " << descripcion << " - ha sido eliminada" << endl;
-			}
-			else
-			{
-				cout << "Error. No se ha podido eliminar la categoria." << endl;
-			}
+			if (lCat->eliminar(elim)) {
 
-		}
-		else
-		{
-			cout << "La categoria ingresada no existe" << endl;
-		}
+				cout << "La categoria - ha sido eliminada" << endl; 
+			}else{
+			
+				cout << "Error. La categoria ingresada no existe" << endl;
+			}
+		
 		break;
 
 	case 5:

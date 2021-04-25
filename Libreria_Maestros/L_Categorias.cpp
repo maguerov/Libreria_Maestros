@@ -95,16 +95,23 @@ void L_Categorias::agregarFinal(Categoria* categoria)
 
 void L_Categorias::desplegar()
 {
+	if (!esVacia()) {
+		NodoCategoria* aux = getCab();
 
-	NodoCategoria* aux = getCab();
-	while (aux != NULL)
-	{
-		cout << "Id de categoria: " << aux->getCategoria()->getIdCat() << endl;
-		cout << "Descripcion: " << aux->getCategoria()->getDescripcion() << endl;
-		cout << " - - - - - - -" << endl;
-		aux = aux->getSgte();
+		while (aux != NULL)
+		{
+			cout << "Id de categoria: " << aux->getCategoria()->getIdCat() << endl;
+			cout << "Descripcion: " << aux->getCategoria()->getDescripcion() << endl;
+			cout << " - - - - - - -" << endl;
+			aux = aux->getSgte();
+		}
+		cout << "Fin de la lista  " << endl;
+
 	}
-	cout << "Fin de la lista  " << endl;
+	else {
+		cout << "La lista esta vacia " << endl;
+	}
+
 }
 
 
@@ -161,7 +168,7 @@ NodoCategoria* L_Categorias::dirAnterior(int pId)
 	}
 }
 
-bool L_Categorias::ModificarCategoria(string descripcion)
+bool L_Categorias::modificarCategoria(string descripcion)
 {
 	//simplificado
 	NodoCategoria* aux = getCab();
