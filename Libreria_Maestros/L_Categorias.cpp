@@ -91,7 +91,9 @@ void L_Categorias::desplegar()
 	NodoCategoria* aux = getCab();
 	while (aux != NULL)
 	{
-		cout << aux->getCategoria()->getIdCat()<<" "<< aux->getCategoria()->getDescripcion()<<endl;
+		cout << "Id de categoria: " << aux->getCategoria()->getIdCat() << endl;
+		cout << "Descripcion: " << aux->getCategoria()->getDescripcion() << endl;
+		cout << " - - - - - - -" << endl;
 		aux = aux->getSgte();
 	}
 	cout << "Fin de la lista  " << endl;
@@ -228,7 +230,7 @@ NodoCategoria* L_Categorias::buscarCategoria(string descripcion)
 		while (aux->getSgte() != NULL)
 		{
 			if (aux->getSgte()->getCategoria()->getDescripcion().compare(descripcion) == 0) {
-				nodoCategoria = aux;
+				nodoCategoria = aux->getSgte();
 				encontrado = true;
 			}
 			aux = aux->getSgte();

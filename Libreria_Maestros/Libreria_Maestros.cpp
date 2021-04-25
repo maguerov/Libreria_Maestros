@@ -20,9 +20,10 @@ void procesarLibros(int opcion);
 void menuModificarLibro(Libro* libro);
 void procesarModificarLibro(Libro* libro, int opcion);
 
-/*void menuCategorias();
+void menuCategorias();
 void procesarCategorias(int opcion);
 
+/*
 void menuReportes();
 void procesarReportes(int opcion);*/
 
@@ -39,7 +40,10 @@ int codigo, anio, cantInventario;
 float precio;
 
 
-L_Categorias* cat = new L_Categorias();
+L_Categorias* lCat = new L_Categorias();
+NodoCategoria* nodoCat = new NodoCategoria();
+Categoria* categoria = new Categoria();
+char descripcion[50];
 
 int main()
 {
@@ -62,38 +66,16 @@ void test() {
     l->agregarInicio(libro1);
     l->agregarInicio(libro2);
     l->agregarInicio(libro4);
+
+    Categoria* categoria = new Categoria("Terror");
+    Categoria* categoria2 = new Categoria("Espiritual");
+    Categoria* categoria3 = new Categoria("Actualidad");
+
+    lCat->agregarFinal(categoria);
+    lCat->agregarFinal(categoria2);
+    lCat->agregarFinal(categoria3);
+
     /*
-  
-  //  Libro* libro3 = new Libro("Mary Shelley", 3, "Frankestein", 5500, "No agotado", "Editorial Oceano", 7, 1890);
-
-    Libro* libro4 = new Libro("J.R.R Tolkien", "Silmarillion", 7500.0, "Editorial Alma", 3, 1928);
-    Libro* libro2 = new Libro("Dante Allighieri", "La Divina Comedia", 4500.0, "Editorial Alma", 3, 1600);
-    l->agregarInicio(libro2);
-    l->agregarInicio(libro4);
-   // l->agregarInicio(libro4);
-
-    cout << "Lista de todos los libros" << endl;
-    l->desplegar();
-
-    Libro* libroTemp = l->buscarNombre("La Divina Comedia")->getLibro();
-    libroTemp->toString();
-
-
-    
-    cout << "______________ " << endl;
-    cout << "______________ " << endl;
-
-    cout << "modificar existencia " << endl;
-    l->modificarExistencia(2, 2);
-    l->desplegar();
-    cout << "______________ " << endl;
-
-    cout << "modificar existencia " << endl;
-    l->modificarExistencia(2, 0);
-    l->desplegar();
-    cout << "______________ " << endl;
-
-
    
     l->precioInventarioTotal();
 
@@ -129,14 +111,7 @@ void test() {
     l->desplegar();
  
    
-  
-    Categoria* categoria = new Categoria("Terror");
-    Categoria* categoria2 = new Categoria("Espiritual");
-    Categoria* categoria3 = new Categoria("Actualidad");
-
-    cat->agregarFinal(categoria);
-    cat->agregarFinal(categoria2);
-    cat->agregarFinal(categoria3);
+ 
     cout << "Lista de libros para la categoria dada" << endl;
     cat->buscarCategoria("Terror")->getLista()->desplegar();
 
@@ -232,7 +207,7 @@ void procesarOpcion(int pOpcion)
         break;
 
     case 2:
-     //   menuCategorias();
+        menuCategorias();
         break;
 
     case 3:
@@ -428,7 +403,6 @@ void procesarLibros(int pOpcion)
     menuLibros();
 }
 
-
 void menuModificarLibro(Libro* pLibro)
 {
     cout << "\n";
@@ -496,7 +470,7 @@ void procesarModificarLibro(Libro* pLibro, int pOpcion)
 
 }
 
-/*
+
 // Menu categorias
 void menuCategorias()
 {
@@ -510,12 +484,13 @@ void menuCategorias()
     cad += "3. Agregar libro a una categoria. \n";
     cad += "4. Eliminar. \n";
     cad += "5. Desplegar lista de categorias. \n";
-    cad += "6. Desplegar libros por categoria. \n";
+    cad += "6. Desplegar libros de una categoria. \n";
     cad += "7. Volver al menu principal. \n";
     cad += "0. Salir \n";
     cout << cad;
     cout << "\n";
     cin >> opcionMenu;
+    cin.ignore();
     procesarCategorias(opcionMenu);
 }
 
@@ -525,27 +500,118 @@ void procesarCategorias(int pOpcion)
     {
 
     case 1:
-
+        cout << "Digite la descripcion de la categoria que desea agregar" << endl;
+        cin.getline(descripcion, 50);
+        cin.ignore();
+        categoria->setDescripcion(descripcion);
+        lCat->agregarFinal(categoria);
+        cout << " - Categoria agregada - " << endl;
+        lCat->buscarCategoria(categoria->getDescripcion())->toString();
         break;
 
     case 2:
+        cout << "Digite la descripcion de la categoria que desea modidicar" << endl;
+        cin.getline(descripcion, 50);
+        cin.ignore();
+        nodoCat = lCat->buscarCategoria(descripcion);
 
+        if (nodoCat != NULL) {
+            cout << "Digite la nueva descripcion para la categoria" << endl;
+            cin.getline(descripcion, 50);
+            cin.ignore();
+            nodoCat->getCategoria()->setDescripcion(descripcion);
+            if (lCat->ModificarCategoria(nodoCat->getCategoria()->getDescripcion())) {
+                cout << " - Categoria modificada - " << endl;
+                nodoCat->toString();
+            }
+            else
+            {
+                cout << "Error. No se pudo actualizar la categoria";
+            }
+        }
+        else
+        {
+            cout << "La categoria ingresada no existe en la base de datos";
+        }
         break;
 
     case 3:
+        cout << "Digite la categoria a la que desea agregar un libro" << endl;
+        cin.getline(descripcion, 50);
+        cin.ignore();
+        nodoCat = lCat->buscarCategoria(descripcion);
+
+        if (nodoCat != NULL)
+        {
+            cout << "Digite el nombre del libro que desea agregar a la categoria" << endl;
+            cin.getline(titulo, 100);
+            cin.ignore();
+
+            nodoAux = l->buscarNombre(titulo);
+            if (nodoAux != NULL)
+            {
+                nodoCat->getLista()->agregarLibro(nodoAux);
+                cout << " - El libro ha sido agregado a la categoria - ";
+            }
+        }
+        else
+        {
+            cout << "La categoria ingresada no existe en la base de datos";
+        }
+
+
 
         break;
 
     case 4:
+        cout << "Digite la categoria que desea eliminar" << endl;
+        cin.getline(descripcion, 50);
+        cin.ignore();
+        nodoCat = lCat->buscarCategoria(descripcion);
 
+        if (nodoCat != NULL)
+        {
+            if (lCat->eliminar(nodoCat->getCategoria()->getIdCat())) {
+                cout << "La categoria - " << descripcion << " - ha sido eliminada" << endl;
+            }
+            else
+            {
+                cout << "Error. No se ha podido eliminar la categoria." << endl;
+            }
+            
+        }
+        else
+        {
+            cout << "La categoria ingresada no existe" << endl;
+        }
         break;
 
     case 5:
-
+        lCat->desplegar();
         break;
 
     case 6:
+        cout << "Digite la categoria que desea consultar" << endl;
+        cin.getline(descripcion, 50);
+        cin.ignore();
+        nodoCat = lCat->buscarCategoria(descripcion);
 
+        if (nodoCat != NULL)
+        {
+            if (nodoCat->getLista()->getLargo() > 0)
+            {
+                nodoCat->getLista()->desplegar();
+            }
+            else
+            {
+                cout << " - No existen libros dentro de esta categoria - " << endl;
+            }
+            
+        }
+        else
+        {
+            cout << "La categoria ingresada no existe" << endl;
+        }
         break;
 
     case 7:
@@ -565,6 +631,7 @@ void procesarCategorias(int pOpcion)
     menuCategorias();
 }
 
+/*
 // Menu reportes
 void menuReportes()
 {

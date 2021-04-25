@@ -41,3 +41,10 @@ L_LibroXCat* NodoCategoria::getLista() {
 void NodoCategoria::setLista(L_LibroXCat* lista) {
     this->lista = lista;
 }
+
+void NodoCategoria::toString()
+{
+    cout << "Id de categoria: " << categoria->getIdCat() << endl;
+    cout << "Descripcion: " << categoria->getDescripcion() << endl;
+    cout << " - - - - - - - - - - " << endl;
+}

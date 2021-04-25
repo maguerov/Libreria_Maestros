@@ -25,5 +25,7 @@ public:
 
 	L_LibroXCat* getLista();
 	void setLista(L_LibroXCat*);
+
+	void toString();
 };
 #endif

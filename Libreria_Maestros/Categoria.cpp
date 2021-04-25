@@ -5,7 +5,7 @@ using namespace std;
 
 Categoria::Categoria()
 {
-	this->descripcion = "";
+	this->descripcion;
 	this->idCat = NULL;
 }
 
@@ -41,4 +41,3 @@ string Categoria::getDescripcion() {
 void Categoria::setDescripcion(string pDescripcion) {
 	this->descripcion = pDescripcion;
 }
-
