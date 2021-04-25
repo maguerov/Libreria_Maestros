@@ -16,19 +16,14 @@ public:
 	void setCab(NodoCategoria* cat);//listo
 	void desplegar(); //listo
 	bool esVacia();//listo
-	void agregarInicio(Categoria* categoria);//listo
+	//void agregarInicio(Categoria* categoria);//listo
 	bool eliminar(int id);//listo
 	NodoCategoria* dirNodo(int id);//listo
 	NodoCategoria* dirUltimo();//listo
 	void agregarFinal(Categoria* categoria);//listo
 	NodoCategoria* dirAnterior(int id);//listo
-
-
-
-	/*Modificar el buscar para q devuelva lo q se necesite*/
-	//Categoria* buscarCategoria(string descripcion);
-
-	NodoCategoria* buscarCategoria(string descripcion);
+    bool ModificarCategoria(string descripcion);//listo
+	NodoCategoria* buscarCategoria(string descripcion);//listo
 	
 
 

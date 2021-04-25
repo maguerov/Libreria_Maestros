@@ -230,29 +230,25 @@ NodoLibro* L_Libros::dirAnterior(int codigo)
 	}
 }
 
-void L_Libros::buscarNombre(string nombre)
+NodoLibro* L_Libros::buscarNombre(string nombre)
 {
 	NodoLibro* aux = getCab();
 	bool encontrado = false;
 	if (aux->getLibro()->getTituloLibro() == nombre) {
-		encontrado = true;
-		aux->getLibro()->toString();
+		return aux;
 	}
 	else
 	{
 		while (aux->getSiguiente() != NULL)
 		{
 			if (aux->getSiguiente()->getLibro()->getTituloLibro() == nombre) {
-				aux->getLibro()->toString();
-				encontrado = true;
+				return aux;
 			}
 			aux = aux->getSiguiente();
 		}
 	}
-	if (encontrado == false)
-	{
-		cout << "Libro no encontrado" << endl;
-	}
+	
+	return NULL;
 }
 
 Libro *L_Libros::buscarCodigo(int codigo)

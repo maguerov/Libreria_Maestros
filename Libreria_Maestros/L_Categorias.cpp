@@ -150,37 +150,67 @@ NodoCategoria* L_Categorias::dirAnterior(int pId)
 		return NULL;
 	}
 }
-/*
-Categoria* L_Categorias::buscarCategoria(string descripcion)
+
+bool L_Categorias::ModificarCategoria(string descripcion)
 {
+	//simplificado
 	NodoCategoria* aux = getCab();
-	Categoria* categoria = new Categoria();
-	bool encontrado = false;
-	if (aux->getCategoria()->getDescripcion().compare(descripcion) == 0) {
-		encontrado = true;
+	string  newDescripcion;
+	bool modificado = false;
 
-		categoria = aux->getCategoria();
-
-	}
-	else
-	{
-		while (aux->getSgte() != NULL)
+	if (!esVacia()) {
+		while (aux != NULL)
 		{
-			if (aux->getSgte()->getCategoria()->getDescripcion().compare(descripcion) == 0) {
-				categoria = aux->getCategoria();
-				encontrado = true;
+			if (aux->getCategoria()->getDescripcion().compare(descripcion) == 0) {
+
+				cout << "Modificar Categoria" << endl;
+				cout << "Id: " << aux->getCategoria()->getIdCat() << endl;
+				cout << "Descripcion actual: " << aux->getCategoria()->getDescripcion() << endl;
+				cout << "ingrese la nueva descripcion: " << endl;
+				cin >> descripcion;
+				aux->getCategoria()->setDescripcion(descripcion);
+				modificado = true;
 			}
 			aux = aux->getSgte();
 		}
 	}
-	if (encontrado == false)
-	{
-		return NULL;
-	}
+	return modificado;
 
-	return categoria;
+	/*	NodoCategoria* aux = getCab();
+	string  newDescripcion;
+	bool modificado = false;
+
+	if (aux->getCategoria()->getDescripcion().compare(descripcion) == 0) {
+		
+		cout << "Modificar Categoria" << endl;
+		cout <<"Id: "<< aux->getCategoria()->getIdCat() << endl;
+		cout <<"Descripcion actual: " << aux->getCategoria()->getDescripcion() << endl;
+		cout << "ingrese la nueva descripcion: " << endl;
+		cin >> newDescripcion;
+		aux->getCategoria()->setDescripcion(newDescripcion);
+		modificado = true;
+
+	}
+	else
+	{
+		while (aux != NULL)
+		{
+			if (aux->getCategoria()->getDescripcion().compare(descripcion) == 0) {
+
+				cout << "Modificar Categoria" << endl;
+				cout << "Id: " << aux->getCategoria()->getIdCat() << endl;
+				cout << "Descripcion actual: " << aux->getCategoria()->getDescripcion() << endl;
+				cout << "ingrese la nueva descripcion: " << endl;
+				cin >> descripcion;
+				aux->getCategoria()->setDescripcion(descripcion);
+				modificado = true;
+			}
+			aux = aux->getSgte();
+		}
+	}
+	return modificado;*/
 }
-*/
+
 
 
 NodoCategoria* L_Categorias::buscarCategoria(string descripcion)

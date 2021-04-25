@@ -23,6 +23,6 @@ public:
 	bool eliminar(int codigo);//Sirve
 	NodoLibro* dirNodo(int codigo);
 	NodoLibro* dirAnterior(int codigo);
-	void buscarNombre(string titulo);
+	NodoLibro* buscarNombre(string titulo);
 	Libro* buscarCodigo(int codigo);//Sirve
 };
