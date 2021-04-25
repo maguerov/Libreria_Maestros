@@ -246,7 +246,6 @@ void procesarLibros(int pOpcion)
         libro->setEditorial(editorial);
 
         cout << "Digite el año de publicacion del libro" << endl;
-        cin >> anio;
         cin.ignore();
         libro->setAnnio(anio);
 
