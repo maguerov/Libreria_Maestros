@@ -1,4 +1,8 @@
 #include "L_Libros.h"
+#include <iostream>
+#include <string>
+#include <algorithm>
+#include <cctype>
 
 L_Libros::L_Libros()
 {
@@ -33,6 +37,7 @@ void L_Libros::desplegar()
 	while (aux != NULL)
 	{
 		aux->getLibro()->toString();
+		cout << " - - - - - -" << endl;
 		aux = aux->getSiguiente();
 	}
 }
@@ -126,9 +131,13 @@ bool L_Libros::modificarExistencia(int codigo, int numero)
 	{
 		libro->setCantidad(numero);
 
-		if (libro->getCantidad() == 0)
+		if (libro->getCantidad() <= 0)
 		{
 			libro->setEstado("Agotado");
+		}
+		else
+		{
+			libro->setEstado("Disponible");
 		}
 		actualizado = true;
 	}
@@ -232,22 +241,31 @@ NodoLibro* L_Libros::dirAnterior(int codigo)
 
 NodoLibro* L_Libros::buscarNombre(string nombre)
 {
-	NodoLibro* aux = getCab();
-	bool encontrado = false;
-	if (aux->getLibro()->getTituloLibro() == nombre) {
-		return aux;
-	}
-	else
-	{
-		while (aux->getSiguiente() != NULL)
-		{
-			if (aux->getSiguiente()->getLibro()->getTituloLibro() == nombre) {
-				return aux;
-			}
-			aux = aux->getSiguiente();
+	if (!esVacia()) {
+		NodoLibro* aux = getCab();
+		bool encontrado = false;
+
+		string pmin = aux->getLibro()->getTituloLibro(); // pmin = palabra en minúscula
+		transform(pmin.begin(), pmin.end(), pmin.begin(), ::tolower);  // transforma una cadena de caracteres a minusculas
+		transform(nombre.begin(), nombre.end(), nombre.begin(), ::tolower);
+
+		if (pmin == nombre) {
+			return aux;
 		}
-	}
-	
+		else
+		{
+			while (aux->getSiguiente() != NULL)
+			{
+				string pmin = aux->getSiguiente()->getLibro()->getTituloLibro();
+				transform(pmin.begin(), pmin.end(), pmin.begin(), ::tolower);
+
+				if (pmin == nombre) {
+					return aux->getSiguiente();  // Elian modificó esto porque traía un libro diferente
+				}
+				aux = aux->getSiguiente();
+			}
+		}
+	}	
 	return NULL;
 }
 

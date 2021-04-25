@@ -17,6 +17,8 @@ void procesarOpcion(int opcion);
 
 void menuLibros();
 void procesarLibros(int opcion);
+void menuModificarLibro(Libro* libro);
+void procesarModificarLibro(Libro* libro, int opcion);
 
 /*void menuCategorias();
 void procesarCategorias(int opcion);
@@ -31,9 +33,7 @@ int posicion;
 
 L_Libros* l = new L_Libros();
 Libro* libro = new Libro();
-string titulo;
-string autor;
-string editorial;
+char titulo[100], autor[50], editorial[50];
 int codigo, anio, cantInventario;
 float precio;
 
@@ -43,16 +43,23 @@ L_Categorias* cat = new L_Categorias();
 int main()
 {
     test();
-    /*
+    
     menu();
     system("Pause");
-    return 0;*/
+    return 0;
 }
 
 
 
 void test() {
  
+    Libro* libro1 = new Libro("Suzanne Collins", "The Hunger Games", 7500.0, "Scholastic", 3, 1928);
+    Libro* libro4 = new Libro("J.R.R Tolkien", "Silmarillion", 7500.0, "Editorial Alma", 3, 1928);
+    Libro* libro2 = new Libro("Dante Allighieri", "La Divina Comedia", 4500.0, "Editorial Alma", 3, 1600);
+
+    l->agregarInicio(libro1);
+    l->agregarInicio(libro2);
+    l->agregarInicio(libro4);
 
     /*
   //  Libro* libro3 = new Libro("Mary Shelley", 3, "Frankestein", 5500, "No agotado", "Editorial Oceano", 7, 1890);
@@ -161,7 +168,7 @@ void test() {
     cout << "Lista de libros para la categoria dada" << endl;
     cat->dirNodo(1)->getLista()->desplegar();//La sublista que contiene todos los libros dentro de esta categoria
 
-    */ 
+    
 
     Categoria* categoria = new Categoria("Terror");
     Categoria* categoria2 = new Categoria("Espiritual");
@@ -171,6 +178,8 @@ void test() {
     cat->agregarFinal(categoria3);
 
     cat->desplegar();
+
+
 
   //prueba modificar categoria
 
@@ -184,7 +193,7 @@ void test() {
 
     cat->desplegar();
 
-
+        */
 
   
 
@@ -208,6 +217,7 @@ void menu()
     cout << cad;
     cout << "\n";
     cin >> opcionMenu;
+    cin.ignore();
     procesarOpcion(opcionMenu);
 }
 void procesarOpcion(int pOpcion)
@@ -254,12 +264,13 @@ void menuLibros()
     cad += "4. Eliminar. \n";
     cad += "5. Desplegar lista de libros. \n";
     cad += "6. Actualizacion automatica de precios. \n";
-    cad += "7. Volver al menu principal. \n";
-    //Falta el desplegar libro (solo uno) 
+    cad += "7. Desplegar informacion de un libro. \n";
+    cad += "8. Volver al menu principal. \n";
     cad += "0. Salir \n";
     cout << cad;
     cout << "\n";
     cin >> opcionMenu;
+    cin.ignore();
     procesarLibros(opcionMenu);
 }
 
@@ -270,45 +281,91 @@ void procesarLibros(int pOpcion)
 
     case 1:
         cout << "Digite el titulo o nombre del libro que desea agregar" << endl;
+        cin.getline(titulo, 100);
         cin.ignore();
-        getline(cin, titulo);
-        libro->setTituloLibro(titulo);
-
         cout << "Digite el nombre del autor del libro" << endl;
+        cin.getline(autor, 50);
         cin.ignore();
-        getline(cin, autor);
-        libro->setAutor(autor);
-
         cout << "Digite la editorial a la que pertenece el libro" << endl;
+        cin.getline(editorial, 50);
         cin.ignore();
-        getline(cin, editorial);
-        libro->setEditorial(editorial);
-
         cout << "Digite el año de publicacion del libro" << endl;
-        cin.ignore();
-        libro->setAnnio(anio);
-
+        cin >> anio;
         cout << "Digite el precio del libro" << endl;
         cin >> precio;
-        libro->setPrecio(precio);
-
         cout << "Digite la cantidad de ejemplares a guardar en el inventario" << endl;
         cin >> cantInventario;
-        libro->setCantidad(cantInventario);
 
+        libro->setTituloLibro(titulo);
+        libro->setAutor(autor);
+        libro->setEditorial(editorial);
+        libro->setAnnio(anio);
+        libro->setPrecio(precio);
+        libro->setCantidad(cantInventario);
         l->agregarInicio(libro);
+
+        cout << " - Libro agregado -" << endl;
+        libro->toString();
         break;
 
     case 2:
+        cout << "Digite el nombre de libro que desea buscar " << endl;
+        cin.getline(titulo, 100);
+        cin.ignore();
+        libro = l->buscarNombre(titulo)->getLibro();
 
+        if (libro!=NULL) {
+            menuModificarLibro(libro);
+        }
+        else
+        {
+            cout << "El libro no existe en la base da datos" << endl;
+        }
         break;
 
     case 3:
+        cout << "Digite el nombre de libro que desea actualizar" << endl;
+        cin.getline(titulo, 100);
+        cin.ignore();
+        libro = l->buscarNombre(titulo)->getLibro();
 
+        if (libro != NULL) {
+            cout << "Digite la nueva cantidad en el inventario" << endl;
+            cin >> cantInventario;
+
+            if (l->modificarExistencia(libro->getCodigo(), cantInventario))
+            {
+                cout << " - Existencia modificada -" << endl;
+                libro->toString();
+            }
+        }
+        else
+        {
+            cout << "El libro no existe en la base da datos" << endl;
+        }
         break;
 
     case 4:
+        cout << "Digite el nombre de libro que desea eliminar" << endl;
+        cin.getline(titulo, 100);
+        cin.ignore();
+        libro = l->buscarNombre(titulo)->getLibro();
 
+        if (libro != NULL) {
+            if (l->eliminar(libro->getCodigo()))
+            {
+                cout << libro->getTituloLibro() << " ha sido eliminado. " << endl;
+            }
+            else
+            {
+                cout << "Error. No se ha podido eliminar el libro";
+            }
+           
+        }
+        else
+        {
+            cout << "El libro no existe en la base da datos" << endl;
+        }
         break;
 
     case 5:
@@ -316,11 +373,45 @@ void procesarLibros(int pOpcion)
         break;
 
     case 6:
+        cout << "Digite el nombre de libro del que desea actualizar el precio" << endl;
+        cin.getline(titulo, 100);
+        cin.ignore();
+        libro = l->buscarNombre(titulo)->getLibro();
 
+        if (libro != NULL) {
+
+            cout << "Digite el porcentaje del precio que desea cambiar" << endl;
+            cin >> precio;
+
+            if (l->actualizarPrecio(precio, libro->getCodigo()))
+            {
+                cout << "Precio actualizado con exito" << endl;
+                libro->toString();
+            }
+            else
+            {
+                cout << "Error. No se ha podido actualizar el precio del libro";
+            }
+        }
+        else
+        {
+            cout << "El libro no existe en la base da datos" << endl;
+        }
         break;
 
     case 7:
-        menu();
+        cout << "Digite el nombre de libro que desea buscar " << endl;
+        cin.getline(titulo, 100);
+        cin.ignore();
+        libro = l->buscarNombre(titulo)->getLibro();
+
+        if (libro != NULL) {
+            libro->toString();
+        }
+        else
+        {
+            cout << "El libro no existe en la base da datos" << endl;
+        }
         break;
 
     case 0:
@@ -332,8 +423,75 @@ void procesarLibros(int pOpcion)
         break;
     }
     cout << "\n";
-    system("pause");
     menuLibros();
+}
+
+
+void menuModificarLibro(Libro* pLibro)
+{
+    cout << "\n";
+    cout << " *** Libreria Maestros ***" << endl;
+    cout << " - Modificar libro -" << endl;
+    pLibro->toString();
+    cout << " - - - - - - - - - - - -" << endl;
+    string cad = "";
+    cad += "\n";
+    cad += "1. Modificar titulo. \n";
+    cad += "2. Modificar autor. \n";
+    cad += "3. Modificar editorial. \n";
+    cad += "4. Modificar año. \n";
+    cad += "5. Volver al menu de libros. \n";
+    cad += "0. Salir \n";
+    cout << cad;
+    cout << "\n";
+    cin >> opcionMenu;
+    cin.ignore();
+    procesarModificarLibro(pLibro, opcionMenu);
+}
+
+void procesarModificarLibro(Libro* pLibro, int pOpcion)
+{
+    switch (pOpcion)
+    {
+
+    case 1:
+        cout << "Digite el nuevo titulo del libro" << endl;
+        cin.getline(titulo, 100);
+        cin.ignore();
+        break;
+
+    case 2:
+        cout << "Digite el nuevo autor del libro" << endl;
+        cin.getline(autor, 50);
+        cin.ignore();
+        break;
+
+    case 3:
+        cout << "Digite la nueva editorial del libro" << endl;
+        cin.getline(editorial, 50);
+        cin.ignore();
+        break;
+
+    case 4:
+        cout << "Digite el año de publicacion del libro" << endl;
+        cin >> anio;
+        break;
+
+    case 5:
+        menuLibros();
+        break;
+
+    case 0:
+        cout << "Adios" << endl;
+        exit;
+        break;
+    default:
+        cout << "Opcion invalida" << endl;
+        break;
+    }
+    cout << "\n";
+    menuModificarLibro(pLibro);
+
 }
 
 /*

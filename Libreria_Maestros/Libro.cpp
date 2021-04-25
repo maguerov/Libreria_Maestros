@@ -111,9 +111,10 @@ void Libro::setCantidad(int cantidad)
 
 void Libro::toString()
 {
-	cout << "Autor: " << autor << endl;
 	cout << "Codigo: " << codigo << endl;
+	cout << "Autor: " << autor << endl;
 	cout << "Titulo del libro: " << tituloLibro << endl;
+	cout << "Editorial: " << editorial << endl;
 	cout << "Precio: " << precio << endl;
 	cout << "Estado: " << estado << endl;
 	cout << "Cantidad en inventario: " << cantInventario << endl;
