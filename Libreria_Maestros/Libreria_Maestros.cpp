@@ -391,6 +391,10 @@ void procesarLibros(int pOpcion)
         }
         break;
 
+    case 8:
+        menu();
+        break;
+
     case 0:
         cout << "Adios" << endl;
         exit;

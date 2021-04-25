@@ -1,8 +1,5 @@
 #include "L_Libros.h"
-#include <iostream>
-#include <string>
 #include <algorithm>
-#include <cctype>
 
 L_Libros::L_Libros()
 {
