@@ -49,7 +49,12 @@ void L_Libros::agregarInicio(Libro* libro)
 		libro->setEstado("Agotado");
 	}
 
-	libro->setCodigo(getLargo() + 1);
+	if (dirUltimo() != NULL) {
+		libro->setCodigo(getCab()->getLibro()->getCodigo() + 1);
+	}
+	else {//El primer libro recive el código 0
+		libro->setCodigo(0);
+	}
 
 	NodoLibro* aux = new NodoLibro(libro);
 
@@ -57,6 +62,39 @@ void L_Libros::agregarInicio(Libro* libro)
 	setCab(aux);
 	setLargo(getLargo() + 1);
 }
+
+
+void L_Libros::agregarFinal(Libro* libro)
+{
+	if (dirUltimo()!=NULL) {
+		libro->setCodigo(dirUltimo()->getLibro()->getCodigo() + 1);
+	}
+	else {//El primer libro recive el código 0
+		libro->setCodigo(0);
+	}
+	if (libro->getCantidad() > 0) {
+		libro->setEstado("Disponible");
+	}
+	else
+	{
+		libro->setEstado("Agotado");
+	}
+	NodoLibro* aux = new NodoLibro(libro);
+
+	if (esVacia()) {
+		setCab(aux);
+		setLargo(getLargo() + 1);
+	}
+	else {
+		dirUltimo()->setSiguiente(aux);
+
+	}
+	setLargo(getLargo() + 1);
+
+
+}
+
+
 
 
 bool L_Libros::esVacia()
@@ -292,4 +330,20 @@ Libro *L_Libros::buscarCodigo(int codigo)
 	}
 
 	return lib;
+}
+
+NodoLibro* L_Libros::dirUltimo()
+{
+	NodoLibro* ult = getCab();
+
+	if (!esVacia()) {
+		while (ult->getSiguiente() != NULL) {
+			ult = ult->getSiguiente();
+		}
+	}
+	else {
+		ult = NULL;
+	}
+	return ult;
+
 }

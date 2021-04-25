@@ -34,7 +34,7 @@ int posicion;
 
 L_Libros* l = new L_Libros();
 NodoLibro* nodoAux;
-Libro* libro = new Libro();
+Libro* libro;
 char titulo[100], autor[50], editorial[50];
 int codigo, anio, cantInventario;
 float precio;
@@ -42,7 +42,7 @@ float precio;
 
 L_Categorias* lCat = new L_Categorias();
 NodoCategoria* nodoCat = new NodoCategoria();
-Categoria* categoria = new Categoria();
+Categoria* categoria;
 char descripcion[50];
 
 int main()
@@ -62,6 +62,14 @@ void test() {
     Libro* libro1 = new Libro("Suzanne Collins", "The Hunger Games", 7500.0, "Scholastic", 3, 1928);
     Libro* libro4 = new Libro("J.R.R Tolkien", "Silmarillion", 7500.0, "Editorial Alma", 3, 1928);
     Libro* libro2 = new Libro("Dante Allighieri", "La Divina Comedia", 4500.0, "Editorial Alma", 3, 1600);
+
+  /*  Libro* libro5 = new Libro("Test Collins", "The Hunger Games", 7500.0, "Scholastic", 3, 1928);
+    Libro* libro3 = new Libro("J.R.R Test", "Silmarillion", 7500.0, "Editorial Alma", 3, 1928);
+    Libro* libro6 = new Libro("Dante ATest", "La Divina Comedia", 4500.0, "Editorial Alma", 3, 1600);
+    
+    l->agregarFinal(libro5);
+    l->agregarFinal(libro3);
+    l->agregarFinal(libro6);*/
 
     l->agregarInicio(libro1);
     l->agregarInicio(libro2);
@@ -257,6 +265,7 @@ void procesarLibros(int pOpcion)
     {
 
     case 1:
+        libro = new Libro();
         cout << "Digite el titulo o nombre del libro que desea agregar" << endl;
         cin.getline(titulo, 100);
         cin.ignore();
@@ -331,7 +340,7 @@ void procesarLibros(int pOpcion)
         if (nodoAux != NULL) {
             if (l->eliminar(nodoAux->getLibro()->getCodigo()))
             {
-                cout << nodoAux->getLibro()->getTituloLibro() << " ha sido eliminado. " << endl;
+                cout << "El libro " << titulo << " ha sido eliminado de manera exitosa." << endl;
             }
             else
             {
@@ -362,7 +371,7 @@ void procesarLibros(int pOpcion)
 
             if (l->actualizarPrecio(precio, nodoAux->getLibro()->getCodigo()))
             {
-                cout << "Precio actualizado con exito" << endl;
+                cout << "Precio del libro actualizado con exito" << endl;
                 nodoAux->getLibro()->toString();
             }
             else
@@ -504,6 +513,7 @@ void procesarCategorias(int pOpcion)
     {
 
     case 1:
+        categoria = new Categoria();
         cout << "Digite la descripcion de la categoria que desea agregar" << endl;
         cin.getline(descripcion, 50);
         cin.ignore();

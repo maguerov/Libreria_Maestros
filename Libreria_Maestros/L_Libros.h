@@ -13,6 +13,8 @@ public:
 	void setCab(NodoLibro* cab);
 	void desplegar();//Sirve
 	void agregarInicio(Libro* libro);//Sirve
+
+	void agregarFinal(Libro* libro);//listo
 	bool esVacia();//Sirve
 	void precioInventarioTotal();//Sirve
 	int cantidadLibrosAgotados();//Sirve
@@ -25,4 +27,6 @@ public:
 	NodoLibro* dirAnterior(int codigo);
 	NodoLibro* buscarNombre(string titulo);
 	Libro* buscarCodigo(int codigo);//Sirve
+
+	NodoLibro* dirUltimo();//listo
 };

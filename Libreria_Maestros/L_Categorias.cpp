@@ -67,6 +67,13 @@ NodoCategoria* L_Categorias::dirUltimo()
 
 void L_Categorias::agregarFinal(Categoria* categoria)
 {
+	if (dirUltimo() != NULL) {
+		categoria->setIdCat(dirUltimo()->getCategoria()->getIdCat() + 1);
+	}
+	else {//El primer libro recive el código 0
+		categoria->setIdCat(0);
+	}
+
 	categoria->setIdCat(getLargo() + 1);
 	NodoCategoria* aux = new NodoCategoria(categoria);
 
