@@ -32,6 +32,7 @@ int nuevoNumero;
 int posicion;
 
 L_Libros* l = new L_Libros();
+NodoLibro* nodoAux;
 Libro* libro = new Libro();
 char titulo[100], autor[50], editorial[50];
 int codigo, anio, cantInventario;
@@ -53,6 +54,7 @@ int main()
 
 void test() {
  
+
     Libro* libro1 = new Libro("Suzanne Collins", "The Hunger Games", 7500.0, "Scholastic", 3, 1928);
     Libro* libro4 = new Libro("J.R.R Tolkien", "Silmarillion", 7500.0, "Editorial Alma", 3, 1928);
     Libro* libro2 = new Libro("Dante Allighieri", "La Divina Comedia", 4500.0, "Editorial Alma", 3, 1600);
@@ -60,8 +62,8 @@ void test() {
     l->agregarInicio(libro1);
     l->agregarInicio(libro2);
     l->agregarInicio(libro4);
-
     /*
+  
   //  Libro* libro3 = new Libro("Mary Shelley", 3, "Frankestein", 5500, "No agotado", "Editorial Oceano", 7, 1890);
 
     Libro* libro4 = new Libro("J.R.R Tolkien", "Silmarillion", 7500.0, "Editorial Alma", 3, 1928);
@@ -312,10 +314,10 @@ void procesarLibros(int pOpcion)
         cout << "Digite el nombre de libro que desea buscar " << endl;
         cin.getline(titulo, 100);
         cin.ignore();
-        libro = l->buscarNombre(titulo)->getLibro();
 
-        if (libro!=NULL) {
-            menuModificarLibro(libro);
+        nodoAux = l->buscarNombre(titulo);
+        if (nodoAux !=NULL) {
+            menuModificarLibro(nodoAux->getLibro());
         }
         else
         {
@@ -327,16 +329,16 @@ void procesarLibros(int pOpcion)
         cout << "Digite el nombre de libro que desea actualizar" << endl;
         cin.getline(titulo, 100);
         cin.ignore();
-        libro = l->buscarNombre(titulo)->getLibro();
 
-        if (libro != NULL) {
+        nodoAux = l->buscarNombre(titulo);
+        if (nodoAux != NULL) {
             cout << "Digite la nueva cantidad en el inventario" << endl;
             cin >> cantInventario;
 
-            if (l->modificarExistencia(libro->getCodigo(), cantInventario))
+            if (l->modificarExistencia(nodoAux->getLibro()->getCodigo(), cantInventario))
             {
                 cout << " - Existencia modificada -" << endl;
-                libro->toString();
+                nodoAux->getLibro()->toString();
             }
         }
         else
@@ -349,12 +351,12 @@ void procesarLibros(int pOpcion)
         cout << "Digite el nombre de libro que desea eliminar" << endl;
         cin.getline(titulo, 100);
         cin.ignore();
-        libro = l->buscarNombre(titulo)->getLibro();
 
-        if (libro != NULL) {
-            if (l->eliminar(libro->getCodigo()))
+        nodoAux = l->buscarNombre(titulo);
+        if (nodoAux != NULL) {
+            if (l->eliminar(nodoAux->getLibro()->getCodigo()))
             {
-                cout << libro->getTituloLibro() << " ha sido eliminado. " << endl;
+                cout << nodoAux->getLibro()->getTituloLibro() << " ha sido eliminado. " << endl;
             }
             else
             {
@@ -376,17 +378,17 @@ void procesarLibros(int pOpcion)
         cout << "Digite el nombre de libro del que desea actualizar el precio" << endl;
         cin.getline(titulo, 100);
         cin.ignore();
-        libro = l->buscarNombre(titulo)->getLibro();
-
-        if (libro != NULL) {
+        
+        nodoAux = l->buscarNombre(titulo);
+        if (nodoAux != NULL) {
 
             cout << "Digite el porcentaje del precio que desea cambiar" << endl;
             cin >> precio;
 
-            if (l->actualizarPrecio(precio, libro->getCodigo()))
+            if (l->actualizarPrecio(precio, nodoAux->getLibro()->getCodigo()))
             {
                 cout << "Precio actualizado con exito" << endl;
-                libro->toString();
+                nodoAux->getLibro()->toString();
             }
             else
             {
@@ -403,10 +405,10 @@ void procesarLibros(int pOpcion)
         cout << "Digite el nombre de libro que desea buscar " << endl;
         cin.getline(titulo, 100);
         cin.ignore();
-        libro = l->buscarNombre(titulo)->getLibro();
-
-        if (libro != NULL) {
-            libro->toString();
+        
+        nodoAux = l->buscarNombre(titulo);
+        if (nodoAux != NULL) {
+            nodoAux->getLibro()->toString();
         }
         else
         {
