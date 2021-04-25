@@ -16,7 +16,7 @@ public:
 
 	void agregarFinal(Libro* libro);//listo
 	bool esVacia();//Sirve
-	void precioInventarioTotal();//Sirve
+	float precioInventarioTotal();//Sirve
 	int cantidadLibrosAgotados();//Sirve
 	void librosAgotados();//Sirve
 	void librosNoAgotados();//Sirve

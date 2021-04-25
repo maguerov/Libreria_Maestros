@@ -37,6 +37,7 @@ void L_Libros::desplegar()
 		cout << " - - - - - -" << endl;
 		aux = aux->getSiguiente();
 	}
+	cout << " - - - Fin de la lista - - -" << endl;
 }
 
 void L_Libros::agregarInicio(Libro* libro)
@@ -104,7 +105,7 @@ bool L_Libros::esVacia()
 	return false;
 }
 
-void L_Libros::precioInventarioTotal()
+float L_Libros::precioInventarioTotal()
 {
 	if (!esVacia()) {
 		NodoLibro* aux = cab;
@@ -114,8 +115,9 @@ void L_Libros::precioInventarioTotal()
 				precioIn += aux->getLibro()->getPrecio();
 			aux = aux->getSiguiente();
 		}
-		cout << "Precio del inventario es de: " << precioIn << endl;
+		return precioIn;
 	}
+	return NULL;
 }
 
 int L_Libros::cantidadLibrosAgotados()
