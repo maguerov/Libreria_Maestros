@@ -183,6 +183,19 @@ bool L_Libros::modificarExistencia(int codigo, int numero)
 
 }
 
+bool L_Libros::modificarLibro(Libro* libro)
+{
+	NodoLibro *aux = dirNodo(libro->getCodigo());
+
+	if (aux != NULL) {
+		aux->setLibro(libro);
+		return true;
+	}
+	else {
+		return false; 
+	}
+}
+
 bool L_Libros::actualizarPrecio(int porcentaje, int codigo)
 {
 	bool encontrado = false;

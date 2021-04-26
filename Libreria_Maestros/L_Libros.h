@@ -21,6 +21,7 @@ public:
 	void librosAgotados();//Sirve
 	void librosNoAgotados();//Sirve
 	bool modificarExistencia(int codigo, int numero);//Sirve
+	bool modificarLibro(Libro*);
 	bool actualizarPrecio(int porcentaje, int codigo);//Sirve
 	bool eliminar(int codigo);//Sirve
 	NodoLibro* dirNodo(int codigo);
@@ -29,4 +30,6 @@ public:
 	Libro* buscarCodigo(int codigo);//Sirve
 
 	NodoLibro* dirUltimo();//listo
+
+
 };

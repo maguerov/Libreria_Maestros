@@ -275,7 +275,7 @@ void procesarLibros(int pOpcion)
         cout << "Digite la editorial a la que pertenece el libro" << endl;
         cin.getline(editorial, 50);
         cin.ignore();
-        cout << "Digite el año de publicacion del libro" << endl;
+        cout << "Digite el annioo de publicacion del libro" << endl;
         cin >> anio;
         cout << "Digite el precio del libro" << endl;
         cin >> precio;
@@ -428,7 +428,7 @@ void menuModificarLibro(Libro* pLibro)
 	cad += "1. Modificar titulo. \n";
 	cad += "2. Modificar autor. \n";
 	cad += "3. Modificar editorial. \n";
-	cad += "4. Modificar año. \n";
+	cad += "4. Modificar annioo. \n";
 	cad += "5. Volver al menu de libros. \n";
 	cad += "0. Salir \n";
 	cout << cad;
@@ -447,23 +447,27 @@ void procesarModificarLibro(Libro* pLibro, int pOpcion)
 		cout << "Digite el nuevo titulo del libro" << endl;
 		cin.getline(titulo, 100);
 		cin.ignore();
+		pLibro->setTituloLibro(titulo);
 		break;
 
 	case 2:
 		cout << "Digite el nuevo autor del libro" << endl;
 		cin.getline(autor, 50);
 		cin.ignore();
+		pLibro->setAutor(autor);
 		break;
 
 	case 3:
 		cout << "Digite la nueva editorial del libro" << endl;
 		cin.getline(editorial, 50);
 		cin.ignore();
+		pLibro->setEditorial(editorial);
 		break;
 
 	case 4:
-		cout << "Digite el año de publicacion del libro" << endl;
+		cout << "Digite el annioo de publicacion del libro" << endl;
 		cin >> anio;
+		pLibro->setAnnio(anio);
 		break;
 
 	case 5:
@@ -478,7 +482,8 @@ void procesarModificarLibro(Libro* pLibro, int pOpcion)
 		cout << "Opcion invalida" << endl;
 		break;
 	}
-	cout << "\n";
+
+	l->modificarLibro(pLibro);
 	menuModificarLibro(pLibro);
 
 }

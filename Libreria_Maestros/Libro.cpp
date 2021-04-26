@@ -116,6 +116,7 @@ void Libro::toString()
 	cout << "Titulo del libro: " << tituloLibro << endl;
 	cout << "Editorial: " << editorial << endl;
 	cout << "Precio: " << precio << endl;
+	cout << "Annioo de publicacion: " << annio << endl;
 	cout << "Estado: " << estado << endl;
 	cout << "Cantidad en inventario: " << cantInventario << endl;
 }
