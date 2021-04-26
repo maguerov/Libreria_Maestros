@@ -17,12 +17,13 @@ public:
 	void desplegar(); //listo
 	bool esVacia();//listo
 	//void agregarInicio(Categoria* categoria);//listo
+
 	bool eliminar(int id);//listo
 	NodoCategoria* dirNodo(int id);//listo
 	NodoCategoria* dirUltimo();//listo
 	void agregarFinal(Categoria* categoria);//listo
 	NodoCategoria* dirAnterior(int id);//listo
-    bool ModificarCategoria(string descripcion);//listo
+    bool modificarCategoria(string descripcion);//listo
 	NodoCategoria* buscarCategoria(string descripcion);//listo
 	
 
